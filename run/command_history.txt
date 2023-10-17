@@ -1,0 +1,4 @@
+/playsound cheesy_revoted:crab_rave
+/playsound cheesy_revoted:crab_rave record @a 43.70 73.00 74.29
+/summon cheesy_revoted:armadillo
+/kill @e[type=!minecraft:player]
