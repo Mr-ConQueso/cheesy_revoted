@@ -16,13 +16,13 @@
 	"environment": "*",
 	"entrypoints": {
 		"main": [
-			"net.mrconqueso.CheesyRevoted"
+          "net.mrconqueso.cheesy_revoted.CheesyRevoted"
 		],
 		"client": [
-			"net.mrconqueso.CheesyRevotedClient"
+          "net.mrconqueso.cheesy_revoted.CheesyRevotedClient"
 		],
 		"fabric-datagen": [
-			"net.mrconqueso.CheesyRevotedDataGenerator"
+          "net.mrconqueso.cheesy_revoted.CheesyRevotedDataGenerator"
 		]
 	},
 	"mixins": [

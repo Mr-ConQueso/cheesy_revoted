@@ -10,20 +10,20 @@ Cheesy's Revoted Ideas adds all the features announced from 2017 until today wit
 	],
 	"contact": {
 		"homepage": "https://fabricmc.net/",
-		"sources": "https://github.com/Mr-ConQueso/cheesy-revoted"
+		"sources": "https://github.com/Mr-ConQueso/cheesy_revoted"
 	},
 	"license": "CC0-1.0",
 	"icon": "assets/cheesy_revoted/icon.png",
 	"environment": "*",
 	"entrypoints": {
 		"main": [
-			"net.mrconqueso.CheesyRevoted"
+          "net.mrconqueso.cheesy_revoted.CheesyRevoted"
 		],
 		"client": [
-			"net.mrconqueso.CheesyRevotedClient"
+          "net.mrconqueso.cheesy_revoted.CheesyRevotedClient"
 		],
 		"fabric-datagen": [
-			"net.mrconqueso.CheesyRevotedDataGenerator"
+          "net.mrconqueso.cheesy_revoted.CheesyRevotedDataGenerator"
 		]
 	},
 	"mixins": [

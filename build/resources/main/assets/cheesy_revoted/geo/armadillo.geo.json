@@ -207,6 +207,25 @@
 							}
 						}
 					]
+				},
+				{
+					"name": "hitbox",
+					"parent": "armadillo",
+					"pivot": [0, 14, 0],
+					"cubes": [
+						{
+							"origin": [-9, 1, -9],
+							"size": [18, 16, 18],
+							"uv": {
+								"north": {"uv": [53, 1], "uv_size": [3, 4]},
+								"east": {"uv": [53, 1], "uv_size": [3, 4]},
+								"south": {"uv": [53, 1], "uv_size": [3, 4]},
+								"west": {"uv": [53, 1], "uv_size": [3, 4]},
+								"up": {"uv": [56, 3], "uv_size": [-3, -2]},
+								"down": {"uv": [56, 3], "uv_size": [-3, -2]}
+							}
+						}
+					]
 				}
 			]
 		}

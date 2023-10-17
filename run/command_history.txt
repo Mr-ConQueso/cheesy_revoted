@@ -2,3 +2,17 @@
 /playsound cheesy_revoted:crab_rave record @a 43.70 73.00 74.29
 /summon cheesy_revoted:armadillo
 /kill @e[type=!minecraft:player]
+/reload
+/playsound cheesy_revoted:crab_rave record @a 39.09 72.00 73.98
+/kill @e[type=!minecraft:player]
+/time set day
+/locate biome minecraft:savanna
+/locate biome minecraft:stony_shore
+/tp @s -849 100 1400
+/gamerule doMobSpawning true
+/locate biome minecraft:savanna
+/tp @s -3064 110 -1522
+/locate biome minecraft:mangrove_swamp
+/tp @s -5725 103 -5448
+/locate biome minecraft:stony_shore
+/tp @s -6332 87 -4898
