@@ -1,0 +1,10 @@
+{
+  "crab_rave": {
+    "sounds": [
+      {
+        "name": "cheesy_revoted:crab_rave",
+        "stream": true
+      }
+    ]
+  }
+}

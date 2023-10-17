@@ -1,0 +1,16 @@
+{
+  "entity.cheesy_revoted.crab": "Crab",
+  "item.cheesy_revoted.crab_spawn_egg": "Crab Spawn Egg",
+  "item.cheesy_revoted.crab_claw": "Crab Claw",
+  "item.cheesy_revoted.crab_rave_music_disc": "§bMusic Disc",
+  "item.cheesy_revoted.crab_rave_music_disc.desc": "8 Bit Universe - Crab Rave",
+
+
+  "entity.cheesy_revoted.armadillo": "Armadillo",
+  "item.cheesy_revoted.armadillo_spawn_egg": "Armadillo Spawn Egg",
+
+  "item.cheesy_revoted.armadillo_scute": "Armadillo Scute",
+
+  "entity.cheesy_revoted.penguin": "Penguin",
+  "item.cheesy_revoted.penguin_spawn_egg": "Penguin Spawn Egg"
+}
