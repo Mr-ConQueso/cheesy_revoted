@@ -3,12 +3,10 @@ package net.mrconqueso.cheesy_revoted.item;
 import net.fabricmc.fabric.api.item.v1.FabricItemSettings;
 import net.fabricmc.fabric.api.itemgroup.v1.FabricItemGroupEntries;
 import net.fabricmc.fabric.api.itemgroup.v1.ItemGroupEvents;
-import net.minecraft.item.Item;
-import net.minecraft.item.ItemGroups;
-import net.minecraft.item.MusicDiscItem;
-import net.minecraft.item.SpawnEggItem;
+import net.minecraft.item.*;
 import net.minecraft.registry.Registries;
 import net.minecraft.registry.Registry;
+import net.minecraft.registry.RegistryKey;
 import net.minecraft.util.Identifier;
 import net.mrconqueso.cheesy_revoted.CheesyRevoted;
 import net.mrconqueso.cheesy_revoted.entity.ModEntities;
@@ -34,18 +32,19 @@ public class ModItems {
             new MusicDiscItem(6, ModSounds.CRAB_RAVE, new FabricItemSettings().maxCount(1), 132));
 
 
+    private static void addItemsToItemGroup() {
+        addToItemGroup(ItemGroups.INGREDIENTS, ARMADILLO_SCUTE);
 
-    private static void addItemsToEggsTabItemGroup(FabricItemGroupEntries entries) {
-        entries.add(CRAB_SPAWN_EGG);
-        entries.add(ARMADILLO_SPAWN_EGG);
-        entries.add(PENGUIN_SPAWN_EGG);
+        addToItemGroup(ItemGroups.SPAWN_EGGS, CRAB_SPAWN_EGG);
+        addToItemGroup(ItemGroups.SPAWN_EGGS, ARMADILLO_SPAWN_EGG);
+        addToItemGroup(ItemGroups.SPAWN_EGGS, PENGUIN_SPAWN_EGG);
+
+        addToItemGroup(ItemGroups.TOOLS, CRAB_CLAW);
+        addToItemGroup(ItemGroups.TOOLS, CRAB_RAVE_MUSIC_DISC);
     }
-    private static void addItemsToIngredientsTabItemGroup(FabricItemGroupEntries entries) {
-        entries.add(ARMADILLO_SCUTE);
-    }
-    private static void addItemsToToolsTabItemGroup(FabricItemGroupEntries entries) {
-        entries.add(CRAB_CLAW);
-        entries.add(CRAB_RAVE_MUSIC_DISC);
+
+    private static void addToItemGroup(RegistryKey<ItemGroup> itemGroup, Item item) {
+        ItemGroupEvents.modifyEntriesEvent(itemGroup).register(entries -> entries.add(item));
     }
 
     private static Item registerItem(String name, Item item) {
@@ -55,8 +54,6 @@ public class ModItems {
     public static void registerModItems() {
         CheesyRevoted.LOGGER.info("Registering Mod Items For " + CheesyRevoted.MOD_ID);
 
-        ItemGroupEvents.modifyEntriesEvent(ItemGroups.SPAWN_EGGS).register(ModItems::addItemsToEggsTabItemGroup);
-        ItemGroupEvents.modifyEntriesEvent(ItemGroups.INGREDIENTS).register(ModItems::addItemsToIngredientsTabItemGroup);
-        ItemGroupEvents.modifyEntriesEvent(ItemGroups.TOOLS).register(ModItems::addItemsToToolsTabItemGroup);
+        addItemsToItemGroup();
     }
 }

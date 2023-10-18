@@ -1,11 +1,13 @@
 package net.mrconqueso.cheesy_revoted.entity.custom;
 
 import net.minecraft.block.BlockState;
+import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityType;
 import net.minecraft.entity.ai.goal.*;
 import net.minecraft.entity.attribute.DefaultAttributeContainer;
 import net.minecraft.entity.attribute.EntityAttributes;
 import net.minecraft.entity.damage.DamageSource;
+import net.minecraft.entity.mob.CreeperEntity;
 import net.minecraft.entity.passive.AnimalEntity;
 import net.minecraft.entity.passive.PassiveEntity;
 import net.minecraft.entity.player.PlayerEntity;
@@ -21,8 +23,10 @@ import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.Vec3d;
 import net.minecraft.world.World;
 import net.mrconqueso.cheesy_revoted.entity.ModEntities;
+import net.mrconqueso.cheesy_revoted.item.ModItems;
 import org.jetbrains.annotations.Nullable;
 import software.bernie.geckolib.animatable.GeoEntity;
+import software.bernie.geckolib.constant.DefaultAnimations;
 import software.bernie.geckolib.core.animatable.GeoAnimatable;
 import software.bernie.geckolib.core.animatable.instance.AnimatableInstanceCache;
 import software.bernie.geckolib.core.animatable.instance.SingletonAnimatableInstanceCache;
@@ -47,14 +51,13 @@ public class CrabEntity extends AnimalEntity implements GeoEntity {
     }
     @Override
     protected void initGoals() {
-        this.goalSelector.add(0, new SwimGoal(this));
-        this.goalSelector.add(1, new EscapeDangerGoal(this, 2.0));
-        this.goalSelector.add(2, new AnimalMateGoal(this, 1.0));
-        this.goalSelector.add(3, new FollowParentGoal(this, 1.25));
-        this.goalSelector.add(4, new TemptGoal(this, 1.2, BREEDING_INGREDIENT, false));
-        this.goalSelector.add(5, new WanderAroundFarGoal(this, 1.0));
-        this.goalSelector.add(6, new LookAtEntityGoal(this, PlayerEntity.class, 6.0f));
-        this.goalSelector.add(7, new LookAroundGoal(this));
+        this.goalSelector.add(0, new EscapeDangerGoal(this, 2.0));
+        this.goalSelector.add(1, new AnimalMateGoal(this, 1.0));
+        this.goalSelector.add(2, new FollowParentGoal(this, 1.25));
+        this.goalSelector.add(3, new TemptGoal(this, 1.2, BREEDING_INGREDIENT, false));
+        this.goalSelector.add(4, new WanderAroundFarGoal(this, 1.0));
+        this.goalSelector.add(5, new LookAtEntityGoal(this, PlayerEntity.class, 6.0f));
+        this.goalSelector.add(6, new LookAroundGoal(this));
     }
 
     @Nullable
@@ -88,11 +91,12 @@ public class CrabEntity extends AnimalEntity implements GeoEntity {
 
     @Override
     public void registerControllers(AnimatableManager.ControllerRegistrar controllers) {
-        controllers.add(new AnimationController<GeoAnimatable>(this, "controller", 0, this::predicate));
-        //controllers.add(DefaultAnimations.genericWalkIdleController(this));
-        //controllers.add(DefaultAnimations.genericAttackAnimation(this, DefaultAnimations.ATTACK_STRIKE));
+        //controllers.add(new AnimationController<GeoAnimatable>(this, "controller", 0, this::predicate));
+        controllers.add(DefaultAnimations.genericWalkIdleController(this));
+        controllers.add(DefaultAnimations.genericAttackAnimation(this, DefaultAnimations.ATTACK_STRIKE));
     }
 
+    /*
     private PlayState predicate(AnimationState<GeoAnimatable> geoAnimatableAnimationState) {
         /*
         if (isSongPlaying()) {
@@ -114,19 +118,27 @@ public class CrabEntity extends AnimalEntity implements GeoEntity {
             geoAnimatableAnimationState.getController().setAnimation(RawAnimation.begin().then("dance.clap", Animation.LoopType.LOOP));
         }
 
-        if (geoAnimatableAnimationState.isMoving() && !isSongPlaying()) {
-            geoAnimatableAnimationState.getController().setAnimation(RawAnimation.begin().then("move.walk", Animation.LoopType.LOOP));
+
+        if (geoAnimatableAnimationState.isMoving()) {
+            geoAnimatableAnimationState.setAnimation(RawAnimation.begin().thenLoop("move.walk"));
         }
+        geoAnimatableAnimationState.setAnimation(RawAnimation.begin().thenLoop("misc.idle"));
 
-         */
+        //geoAnimatableAnimationState.setAndContinue(geoAnimatableAnimationState.isMoving() ? RawAnimation.begin().thenLoop("move.walk") : RawAnimation.begin().thenLoop("misc.idle"));
 
-        geoAnimatableAnimationState.getController().setAnimation(RawAnimation.begin().then("misc.idle", Animation.LoopType.LOOP));
         return PlayState.CONTINUE;
     }
+
+     */
 
     @Override
     public AnimatableInstanceCache getAnimatableInstanceCache() {
         return cache;
+    }
+
+    @Override
+    public boolean canBreatheInWater() {
+        return true;
     }
 
     @Override
@@ -158,5 +170,16 @@ public class CrabEntity extends AnimalEntity implements GeoEntity {
     @Override
     protected Vec3d getLeashOffset() {
         return super.getLeashOffset();
+    }
+
+    @Override
+    protected void dropEquipment(DamageSource source, int lootingMultiplier, boolean allowDrops) {
+        CreeperEntity creeperEntity;
+        super.dropEquipment(source, lootingMultiplier, allowDrops);
+        Entity entity = source.getAttacker();
+        if (entity instanceof CreeperEntity && (creeperEntity = (CreeperEntity)entity).shouldDropHead()) {
+            creeperEntity.onHeadDropped();
+            this.dropItem(ModItems.CRAB_RAVE_MUSIC_DISC);
+        }
     }
 }

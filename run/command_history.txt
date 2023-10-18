@@ -16,3 +16,18 @@
 /tp @s -5725 103 -5448
 /locate biome minecraft:stony_shore
 /tp @s -6332 87 -4898
+/kill @e[type=!minecraft:player]
+/time set midnight
+/time set noon
+/gamerule doMobSpawning false
+/kill @e[type=!minecraft:player]
+/setblock ~ ~ ~ glass
+/fill -6531 123 -4519
+/fill -6531 123 -4519 ~ ~ ~ glass
+/kill @e[type=!minecraft:player]
+/fill -6530 124 -4518
+/fill -6530 124 -4518 -6524 124 -4512 minecraft:gravel
+/fill -6506 124 -4505
+/fill -6506 124 -4505 ~ ~ ~ air
+/fill -6517 123 -4517
+/fill -6517 123 -4517 -6513 123 -4513 mud

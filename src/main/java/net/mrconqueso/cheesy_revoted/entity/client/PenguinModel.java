@@ -13,11 +13,15 @@ import software.bernie.geckolib.model.data.EntityModelData;
 public class PenguinModel extends GeoModel<PenguinEntity> {
     @Override
     public Identifier getModelResource(PenguinEntity animatable) {
+        if (animatable.isBaby()) { return new Identifier(CheesyRevoted.MOD_ID, "geo/penguin_baby.geo.json"); }
+
         return new Identifier(CheesyRevoted.MOD_ID, "geo/penguin.geo.json");
     }
 
     @Override
     public Identifier getTextureResource(PenguinEntity animatable) {
+        if (animatable.isBaby()) { return new Identifier(CheesyRevoted.MOD_ID, "textures/entity/penguin_baby.png"); }
+
         return new Identifier(CheesyRevoted.MOD_ID, "textures/entity/penguin.png");
     }
 

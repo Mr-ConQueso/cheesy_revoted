@@ -16,6 +16,8 @@ public class CrabRenderer extends GeoEntityRenderer<CrabEntity> {
 
     @Override
     public Identifier getTextureLocation(CrabEntity animatable) {
+        if (animatable.isBaby()) { return new Identifier(CheesyRevoted.MOD_ID, "textures/entity/crab_baby.png"); }
+
         return new Identifier(CheesyRevoted.MOD_ID, "textures/entity/crab.png");
     }
 

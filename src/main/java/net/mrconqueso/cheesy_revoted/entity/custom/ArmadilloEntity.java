@@ -19,8 +19,10 @@ import net.minecraft.util.ActionResult;
 import net.minecraft.util.Hand;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.Vec3d;
+import net.minecraft.world.GameRules;
 import net.minecraft.world.World;
 import net.mrconqueso.cheesy_revoted.entity.ModEntities;
+import net.mrconqueso.cheesy_revoted.item.ModItems;
 import org.jetbrains.annotations.Nullable;
 import software.bernie.geckolib.animatable.GeoEntity;
 import software.bernie.geckolib.constant.DefaultAnimations;
@@ -56,6 +58,13 @@ public class ArmadilloEntity extends AnimalEntity implements GeoEntity {
     @Override
     public PassiveEntity createChild(ServerWorld world, PassiveEntity entity) {
         return ModEntities.ARMADILLO.create(world);
+    }
+    @Override
+    protected void onGrowUp() {
+        super.onGrowUp();
+        if (!this.isBaby() && this.getWorld().getGameRules().getBoolean(GameRules.DO_MOB_LOOT)) {
+            this.dropItem(ModItems.ARMADILLO_SCUTE, 1);
+        }
     }
 
     @Override
