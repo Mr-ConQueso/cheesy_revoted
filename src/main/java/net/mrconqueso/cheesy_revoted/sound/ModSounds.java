@@ -8,8 +8,10 @@ import net.mrconqueso.cheesy_revoted.CheesyRevoted;
 
 public class ModSounds {
 
+    // --------- / MUSIC DISCS / --------- //
     public static final SoundEvent CRAB_RAVE = registerSoundEvent("crab_rave");
 
+    // --------- / REGISTER SOUNDS / --------- //
     private static SoundEvent registerSoundEvent(String name) {
         Identifier id = new Identifier(CheesyRevoted.MOD_ID, name);
         return Registry.register(Registries.SOUND_EVENT, id, SoundEvent.of(id));

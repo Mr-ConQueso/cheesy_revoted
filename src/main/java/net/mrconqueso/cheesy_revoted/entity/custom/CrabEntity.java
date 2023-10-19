@@ -2,6 +2,8 @@ package net.mrconqueso.cheesy_revoted.entity.custom;
 
 import net.minecraft.block.BlockState;
 import net.minecraft.entity.Entity;
+import net.minecraft.entity.EntityDimensions;
+import net.minecraft.entity.EntityPose;
 import net.minecraft.entity.EntityType;
 import net.minecraft.entity.ai.goal.*;
 import net.minecraft.entity.attribute.DefaultAttributeContainer;
@@ -20,33 +22,33 @@ import net.minecraft.sound.SoundEvents;
 import net.minecraft.util.ActionResult;
 import net.minecraft.util.Hand;
 import net.minecraft.util.math.BlockPos;
-import net.minecraft.util.math.Vec3d;
 import net.minecraft.world.World;
 import net.mrconqueso.cheesy_revoted.entity.ModEntities;
 import net.mrconqueso.cheesy_revoted.item.ModItems;
 import org.jetbrains.annotations.Nullable;
+import org.joml.Vector3f;
 import software.bernie.geckolib.animatable.GeoEntity;
 import software.bernie.geckolib.constant.DefaultAnimations;
-import software.bernie.geckolib.core.animatable.GeoAnimatable;
 import software.bernie.geckolib.core.animatable.instance.AnimatableInstanceCache;
 import software.bernie.geckolib.core.animatable.instance.SingletonAnimatableInstanceCache;
-import software.bernie.geckolib.core.animation.*;
-import software.bernie.geckolib.core.object.PlayState;
+import software.bernie.geckolib.core.animation.AnimatableManager;
 
 public class CrabEntity extends AnimalEntity implements GeoEntity {
-    private AnimatableInstanceCache cache = new SingletonAnimatableInstanceCache(this);
-    private static final Ingredient BREEDING_INGREDIENT = Ingredient.ofItems(Items.MANGROVE_PROPAGULE, Items.SEAGRASS);
     public CrabEntity(EntityType<? extends AnimalEntity> entityType, World world) {
         super(entityType, world);
     }
 
+    // --------- / VARIABLES / --------- //
+    private AnimatableInstanceCache cache = new SingletonAnimatableInstanceCache(this);
+    private static final Ingredient BREEDING_INGREDIENT = Ingredient.ofItems(Items.MANGROVE_PROPAGULE, Items.SEAGRASS);
     private boolean songPlaying;
     @Nullable
     private BlockPos songSource;
 
+    // --------- / ATTRIBUTES & AI / --------- //
     public static DefaultAttributeContainer.Builder setAttributes() {
         return AnimalEntity.createMobAttributes()
-                .add(EntityAttributes.GENERIC_MAX_HEALTH, 10.0f)
+                .add(EntityAttributes.GENERIC_MAX_HEALTH, 7.0f)
                 .add(EntityAttributes.GENERIC_MOVEMENT_SPEED, 0.15f);
     }
     @Override
@@ -60,87 +62,26 @@ public class CrabEntity extends AnimalEntity implements GeoEntity {
         this.goalSelector.add(6, new LookAroundGoal(this));
     }
 
+    // --------- / CHILD / --------- //
     @Nullable
     @Override
     public PassiveEntity createChild(ServerWorld world, PassiveEntity entity) {
         return ModEntities.CRAB.create(world);
     }
 
-    /*
-    @Override
-    public void tickMovement() {
-        if (this.songSource == null || !this.songSource.isWithinDistance(this.getPos(), 10) || !this.getWorld().getBlockState(this.songSource).isOf(Blocks.JUKEBOX)) {
-            this.songPlaying = false;
-            this.songSource = null;
-        }
-        super.tickMovement();
-
-        this.songPlaying = true;
-    }
-
-    @Override
-    public void setNearbySongPlaying(BlockPos songPosition, boolean playing) {
-        this.songSource = songPosition;
-        this.songPlaying = playing;
-    }
-
-    public boolean isSongPlaying() {
-        return this.songPlaying;
-    }
-    */
-
+    // --------- / ANIMATIONS / --------- //
     @Override
     public void registerControllers(AnimatableManager.ControllerRegistrar controllers) {
-        //controllers.add(new AnimationController<GeoAnimatable>(this, "controller", 0, this::predicate));
         controllers.add(DefaultAnimations.genericWalkIdleController(this));
         controllers.add(DefaultAnimations.genericAttackAnimation(this, DefaultAnimations.ATTACK_STRIKE));
     }
-
-    /*
-    private PlayState predicate(AnimationState<GeoAnimatable> geoAnimatableAnimationState) {
-        /*
-        if (isSongPlaying()) {
-            int randomDance = (int) (Math.random() * (2 - 0));
-            switch(randomDance) {
-                case 0:
-                    geoAnimatableAnimationState.getController().setAnimation(RawAnimation.begin().then("dance.clap", Animation.LoopType.LOOP));
-                    break;
-                case 1:
-                    geoAnimatableAnimationState.getController().setAnimation(RawAnimation.begin().then("dance.touchfloor", Animation.LoopType.LOOP));
-                    break;
-                case 2:
-                    geoAnimatableAnimationState.getController().setAnimation(RawAnimation.begin().then("dance.sidewave", Animation.LoopType.LOOP));
-                    break;
-                default:
-                    geoAnimatableAnimationState.getController().setAnimation(RawAnimation.begin().then("dance.clap", Animation.LoopType.LOOP));
-                    break;
-            }
-            geoAnimatableAnimationState.getController().setAnimation(RawAnimation.begin().then("dance.clap", Animation.LoopType.LOOP));
-        }
-
-
-        if (geoAnimatableAnimationState.isMoving()) {
-            geoAnimatableAnimationState.setAnimation(RawAnimation.begin().thenLoop("move.walk"));
-        }
-        geoAnimatableAnimationState.setAnimation(RawAnimation.begin().thenLoop("misc.idle"));
-
-        //geoAnimatableAnimationState.setAndContinue(geoAnimatableAnimationState.isMoving() ? RawAnimation.begin().thenLoop("move.walk") : RawAnimation.begin().thenLoop("misc.idle"));
-
-        return PlayState.CONTINUE;
-    }
-
-     */
 
     @Override
     public AnimatableInstanceCache getAnimatableInstanceCache() {
         return cache;
     }
 
-    @Override
-    public boolean canBreatheInWater() {
-        return true;
-    }
-
+    // --------- / INTERACTIONS / --------- //
     @Override
     public ActionResult interactMob(PlayerEntity player, Hand hand) {
 
@@ -153,23 +94,55 @@ public class CrabEntity extends AnimalEntity implements GeoEntity {
     @Override
     public boolean isBreedingItem(ItemStack stack) { return BREEDING_INGREDIENT.test(stack); }
 
+    // --------- / SOUNDS / --------- //
     @Override
-    protected SoundEvent getAmbientSound() { return SoundEvents.ENTITY_PIG_AMBIENT; }
-
-    @Override
-    protected SoundEvent getHurtSound(DamageSource source) { return SoundEvents.ENTITY_PIG_HURT; }
-
-    @Override
-    protected SoundEvent getDeathSound() { return SoundEvents.ENTITY_PIG_DEATH; }
-
-    @Override
-    protected void playStepSound(BlockPos pos, BlockState state) {
-        this.playSound(SoundEvents.ENTITY_PIG_STEP, 0.15f, 1.0f);
+    protected SoundEvent getAmbientSound() {
+        if (this.isTouchingWater()) {
+            return SoundEvents.ENTITY_DROWNED_AMBIENT_WATER;
+        }
+        return SoundEvents.ENTITY_DROWNED_AMBIENT;
     }
 
     @Override
-    protected Vec3d getLeashOffset() {
-        return super.getLeashOffset();
+    protected SoundEvent getHurtSound(DamageSource source) {
+        if (this.isTouchingWater()) {
+            return SoundEvents.ENTITY_DROWNED_HURT_WATER;
+        }
+        return SoundEvents.ENTITY_DROWNED_HURT;
+    }
+
+    @Override
+    protected SoundEvent getDeathSound() {
+        if (this.isTouchingWater()) {
+            return SoundEvents.ENTITY_DROWNED_DEATH_WATER;
+        }
+        return SoundEvents.ENTITY_DROWNED_DEATH;
+    }
+
+    @Override
+    protected SoundEvent getSwimSound() { return SoundEvents.ENTITY_PIG_AMBIENT; }
+
+    @Override
+    protected void playStepSound(BlockPos pos, BlockState state) { this.playSound(SoundEvents.ENTITY_PIG_STEP, 0.15f, 1.0f); }
+
+    // --------- / ENTITY SETTINGS / --------- //
+    @Override
+    public boolean canBreatheInWater() {
+        return true;
+    }
+
+    @Override
+    public boolean canBeLeashedBy(PlayerEntity player) {
+        return false;
+    }
+
+    // --------- / MODEL SETTINGS / --------- //
+    @Override
+    protected float getActiveEyeHeight(EntityPose pose, EntityDimensions dimensions) { return dimensions.height * 0.555f; }
+
+    @Override
+    protected Vector3f getPassengerAttachmentPos(Entity passenger, EntityDimensions dimensions, float scaleFactor) {
+        return new Vector3f(0.0f, dimensions.height - 0.23f * scaleFactor, 0.0f);
     }
 
     @Override

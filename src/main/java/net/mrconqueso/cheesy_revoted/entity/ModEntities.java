@@ -10,6 +10,7 @@ import net.minecraft.util.Identifier;
 import net.mrconqueso.cheesy_revoted.CheesyRevoted;
 import net.mrconqueso.cheesy_revoted.entity.custom.ArmadilloEntity;
 import net.mrconqueso.cheesy_revoted.entity.custom.CrabEntity;
+import net.mrconqueso.cheesy_revoted.entity.custom.MoobloomEntity;
 import net.mrconqueso.cheesy_revoted.entity.custom.PenguinEntity;
 
 public class ModEntities {
@@ -28,4 +29,9 @@ public class ModEntities {
             Registries.ENTITY_TYPE, new Identifier(CheesyRevoted.MOD_ID, "penguin"),
             FabricEntityTypeBuilder.create(SpawnGroup.CREATURE, PenguinEntity::new)
                     .dimensions(EntityDimensions.fixed(0.8125f, 1.25f)).build());
+
+    public static final EntityType<MoobloomEntity> MOOBLOOM = Registry.register(
+            Registries.ENTITY_TYPE, new Identifier(CheesyRevoted.MOD_ID, "moobloom"),
+            FabricEntityTypeBuilder.create(SpawnGroup.CREATURE, MoobloomEntity::new)
+                    .dimensions(EntityDimensions.fixed(0.9f, 1.4f)).build());
 }

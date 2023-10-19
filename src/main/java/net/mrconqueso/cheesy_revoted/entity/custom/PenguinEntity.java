@@ -1,6 +1,9 @@
 package net.mrconqueso.cheesy_revoted.entity.custom;
 
 import net.minecraft.block.BlockState;
+import net.minecraft.entity.Entity;
+import net.minecraft.entity.EntityDimensions;
+import net.minecraft.entity.EntityPose;
 import net.minecraft.entity.EntityType;
 import net.minecraft.entity.attribute.DefaultAttributeContainer;
 import net.minecraft.entity.attribute.EntityAttributes;
@@ -19,32 +22,40 @@ import net.minecraft.util.Hand;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 import net.mrconqueso.cheesy_revoted.entity.ModEntities;
-import net.mrconqueso.cheesy_revoted.entity.goals.PenguinController;
 import org.jetbrains.annotations.Nullable;
+import org.joml.Vector3f;
 import software.bernie.geckolib.animatable.GeoEntity;
 import software.bernie.geckolib.core.animatable.GeoAnimatable;
 import software.bernie.geckolib.core.animatable.instance.AnimatableInstanceCache;
 import software.bernie.geckolib.core.animatable.instance.SingletonAnimatableInstanceCache;
-import software.bernie.geckolib.core.animation.*;
+import software.bernie.geckolib.core.animation.AnimatableManager;
+import software.bernie.geckolib.core.animation.AnimationController;
+import software.bernie.geckolib.core.animation.AnimationState;
+import software.bernie.geckolib.core.animation.RawAnimation;
 import software.bernie.geckolib.core.object.PlayState;
 
 public class PenguinEntity extends AnimalEntity implements GeoEntity {
-    private AnimatableInstanceCache cache = new SingletonAnimatableInstanceCache(this);
-    private static final Ingredient BREEDING_INGREDIENT = Ingredient.ofItems(Items.SALMON);
     public PenguinEntity(EntityType<? extends AnimalEntity> entityType, World world) { super(entityType, world); }
 
+    // --------- / VARIABLES / --------- //
+    private AnimatableInstanceCache cache = new SingletonAnimatableInstanceCache(this);
+    private static final Ingredient BREEDING_INGREDIENT = Ingredient.ofItems(Items.SALMON);
+
+    // --------- / ATTRIBUTES & AI / --------- //
     public static DefaultAttributeContainer.Builder setAttributes() {
         return AnimalEntity.createMobAttributes()
-                .add(EntityAttributes.GENERIC_MAX_HEALTH, 15.0f)
+                .add(EntityAttributes.GENERIC_MAX_HEALTH, 10.0f)
                 .add(EntityAttributes.GENERIC_MOVEMENT_SPEED, 0.10f);
     }
 
+    // --------- / CHILD / --------- //
     @Nullable
     @Override
     public PassiveEntity createChild(ServerWorld world, PassiveEntity entity) {
         return ModEntities.PENGUIN.create(world);
     }
 
+    // --------- / ANIMATIONS / --------- //
     @Override
     public void registerControllers(AnimatableManager.ControllerRegistrar controllers) {
         controllers.add(new AnimationController<GeoAnimatable>(this, "controller", 0, this::predicate));
@@ -68,17 +79,19 @@ public class PenguinEntity extends AnimalEntity implements GeoEntity {
         return cache;
     }
 
+    // --------- / INTERACTIONS / --------- //
     @Override
     public ActionResult interactMob(PlayerEntity player, Hand hand) {
 
         boolean bl = this.isBreedingItem(player.getStackInHand(hand));
-        ActionResult actionResult = super.interactMob(player, hand);
 
-        return actionResult;
+        return super.interactMob(player, hand);
     }
+
     @Override
     public boolean isBreedingItem(ItemStack stack) { return BREEDING_INGREDIENT.test(stack); }
 
+    // --------- / SOUNDS / --------- //
     @Override
     protected SoundEvent getAmbientSound() {
         if (this.isTouchingWater()) {
@@ -107,7 +120,20 @@ public class PenguinEntity extends AnimalEntity implements GeoEntity {
     protected SoundEvent getSwimSound() { return SoundEvents.ENTITY_PIG_AMBIENT; }
 
     @Override
-    protected void playStepSound(BlockPos pos, BlockState state) {
-        this.playSound(SoundEvents.ENTITY_PIG_STEP, 0.15f, 1.0f);
+    protected void playStepSound(BlockPos pos, BlockState state) { this.playSound(SoundEvents.ENTITY_PIG_STEP, 0.15f, 1.0f); }
+
+    // --------- / ENTITY SETTINGS / --------- //
+    @Override
+    public boolean canBeLeashedBy(PlayerEntity player) {
+        return false;
+    }
+
+    // --------- / MODEL SETTINGS / --------- //
+    @Override
+    protected float getActiveEyeHeight(EntityPose pose, EntityDimensions dimensions) { return dimensions.height * 0.7744f; }
+
+    @Override
+    protected Vector3f getPassengerAttachmentPos(Entity passenger, EntityDimensions dimensions, float scaleFactor) {
+        return new Vector3f(0.0f, dimensions.height - 0.1562f * scaleFactor, dimensions.width * 0.30f);
     }
 }

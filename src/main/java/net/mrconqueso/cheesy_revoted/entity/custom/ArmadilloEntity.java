@@ -1,6 +1,9 @@
 package net.mrconqueso.cheesy_revoted.entity.custom;
 
 import net.minecraft.block.BlockState;
+import net.minecraft.entity.Entity;
+import net.minecraft.entity.EntityDimensions;
+import net.minecraft.entity.EntityPose;
 import net.minecraft.entity.EntityType;
 import net.minecraft.entity.ai.goal.*;
 import net.minecraft.entity.attribute.DefaultAttributeContainer;
@@ -24,6 +27,7 @@ import net.minecraft.world.World;
 import net.mrconqueso.cheesy_revoted.entity.ModEntities;
 import net.mrconqueso.cheesy_revoted.item.ModItems;
 import org.jetbrains.annotations.Nullable;
+import org.joml.Vector3f;
 import software.bernie.geckolib.animatable.GeoEntity;
 import software.bernie.geckolib.constant.DefaultAnimations;
 import software.bernie.geckolib.core.animatable.instance.AnimatableInstanceCache;
@@ -31,15 +35,18 @@ import software.bernie.geckolib.core.animatable.instance.SingletonAnimatableInst
 import software.bernie.geckolib.core.animation.AnimatableManager;
 
 public class ArmadilloEntity extends AnimalEntity implements GeoEntity {
-    private AnimatableInstanceCache cache = new SingletonAnimatableInstanceCache(this);
-    private static final Ingredient BREEDING_INGREDIENT = Ingredient.ofItems(Items.GOLD_NUGGET);
     public ArmadilloEntity(EntityType<? extends AnimalEntity> entityType, World world) {
         super(entityType, world);
     }
 
+    // --------- / VARIABLES / --------- //
+    private AnimatableInstanceCache cache = new SingletonAnimatableInstanceCache(this);
+    private static final Ingredient BREEDING_INGREDIENT = Ingredient.ofItems(Items.GOLD_NUGGET);
+
+    // --------- / ATTRIBUTES & AI / --------- //
     public static DefaultAttributeContainer.Builder setAttributes() {
         return AnimalEntity.createMobAttributes()
-                .add(EntityAttributes.GENERIC_MAX_HEALTH, 25.0f)
+                .add(EntityAttributes.GENERIC_MAX_HEALTH, 20.0f)
                 .add(EntityAttributes.GENERIC_MOVEMENT_SPEED, 0.25f);
     }
     @Override
@@ -54,6 +61,7 @@ public class ArmadilloEntity extends AnimalEntity implements GeoEntity {
         this.goalSelector.add(7, new LookAroundGoal(this));
     }
 
+    // --------- / CHILD & GROW-UP / --------- //
     @Nullable
     @Override
     public PassiveEntity createChild(ServerWorld world, PassiveEntity entity) {
@@ -66,7 +74,7 @@ public class ArmadilloEntity extends AnimalEntity implements GeoEntity {
             this.dropItem(ModItems.ARMADILLO_SCUTE, 1);
         }
     }
-
+    // --------- / ANIMATIONS / --------- //
     @Override
     public void registerControllers(AnimatableManager.ControllerRegistrar controllers) {
         controllers.add(DefaultAnimations.genericWalkIdleController(this));
@@ -77,6 +85,7 @@ public class ArmadilloEntity extends AnimalEntity implements GeoEntity {
         return cache;
     }
 
+    // --------- / INTERACTIONS / --------- //
     @Override
     public ActionResult interactMob(PlayerEntity player, Hand hand) {
 
@@ -88,6 +97,7 @@ public class ArmadilloEntity extends AnimalEntity implements GeoEntity {
     @Override
     public boolean isBreedingItem(ItemStack stack) { return BREEDING_INGREDIENT.test(stack); }
 
+    // --------- / SOUNDS / --------- //
     @Override
     protected SoundEvent getAmbientSound() { return SoundEvents.ENTITY_PIG_AMBIENT; }
 
@@ -98,12 +108,17 @@ public class ArmadilloEntity extends AnimalEntity implements GeoEntity {
     protected SoundEvent getDeathSound() { return SoundEvents.ENTITY_PIG_DEATH; }
 
     @Override
-    protected void playStepSound(BlockPos pos, BlockState state) {
-        this.playSound(SoundEvents.ENTITY_PIG_STEP, 0.15f, 1.0f);
-    }
+    protected void playStepSound(BlockPos pos, BlockState state) { this.playSound(SoundEvents.ENTITY_PIG_STEP, 0.15f, 1.0f); }
+
+    // --------- / MODEL SETTINGS / --------- //
+    @Override
+    protected Vec3d getLeashOffset() { return new Vec3d(0.0, this.getStandingEyeHeight(), this.getWidth() * 0.94f); }
 
     @Override
-    protected Vec3d getLeashOffset() {
-        return super.getLeashOffset();
+    protected float getActiveEyeHeight(EntityPose pose, EntityDimensions dimensions) { return dimensions.height * 0.333f; }
+
+    @Override
+    protected Vector3f getPassengerAttachmentPos(Entity passenger, EntityDimensions dimensions, float scaleFactor) {
+        return new Vector3f(0.0f, dimensions.height - 0.0625f * scaleFactor, 0.0f);
     }
 }

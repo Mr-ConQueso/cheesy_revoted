@@ -18,6 +18,7 @@ public class CrabClawItem extends ToolItem {
         super(material, settings);
     }
 
+    // --------- / EXTEND REACH WHEN HELD / --------- //
     @Override
     public void inventoryTick(ItemStack stack, World world, Entity entity, int slot, boolean selected) {
 
@@ -28,6 +29,7 @@ public class CrabClawItem extends ToolItem {
         super.inventoryTick(stack, world, entity, slot, selected);
     }
 
+    // --------- / ADDED REACH TOOLTIP / --------- //
     @Override
     public void appendTooltip(ItemStack stack, @Nullable World world, List<Text> tooltip, TooltipContext context) {
         tooltip.add(Text.literal(""));

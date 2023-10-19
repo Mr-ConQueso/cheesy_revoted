@@ -11,6 +11,9 @@ import net.mrconqueso.cheesy_revoted.entity.ModEntities;
 
 public class ModEntityGeneration {
     public static void addSpawns() {
+
+        // --------- / SPAWN ENTITIES IN WORLD / --------- //
+
         BiomeModifications.addSpawn(BiomeSelectors.includeByKey(BiomeKeys.SAVANNA), SpawnGroup.CREATURE,
                 ModEntities.ARMADILLO, 35, 1, 2);
 

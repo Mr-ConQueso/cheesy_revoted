@@ -27,6 +27,7 @@ import net.minecraft.world.World;
 import net.minecraft.world.WorldView;
 import org.jetbrains.annotations.Nullable;
 
+// --------- / PENGUIN AI CONTROLLER / --------- //
 public class PenguinController extends AnimalEntity {
     private static final TrackedData<BlockPos> TRAVEL_POS = DataTracker.registerData(PenguinController.class, TrackedDataHandlerRegistry.BLOCK_POS);
     private static final TrackedData<Boolean> LAND_BOUND = DataTracker.registerData(PenguinController.class, TrackedDataHandlerRegistry.BOOLEAN);

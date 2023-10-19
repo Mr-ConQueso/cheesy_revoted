@@ -11,6 +11,8 @@ import software.bernie.geckolib.model.GeoModel;
 import software.bernie.geckolib.model.data.EntityModelData;
 
 public class ArmadilloModel extends GeoModel<ArmadilloEntity> {
+
+    // --------- / RESOURCES / --------- //
     @Override
     public Identifier getModelResource(ArmadilloEntity animatable) {
         return new Identifier(CheesyRevoted.MOD_ID, "geo/armadillo.geo.json");
@@ -26,6 +28,7 @@ public class ArmadilloModel extends GeoModel<ArmadilloEntity> {
         return new Identifier(CheesyRevoted.MOD_ID, "animations/armadillo.animation.json");
     }
 
+    // --------- / ROTATE HEAD / --------- //
     @Override
     public void setCustomAnimations(ArmadilloEntity animatable, long instanceId, AnimationState<ArmadilloEntity> animationState) {
         CoreGeoBone head = getAnimationProcessor().getBone("head");

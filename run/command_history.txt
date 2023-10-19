@@ -31,3 +31,6 @@
 /fill -6506 124 -4505 ~ ~ ~ air
 /fill -6517 123 -4517
 /fill -6517 123 -4517 -6513 123 -4513 mud
+/summon cheesy_revoted:moobloom
+/reload
+/kill @e[type=!minecraft:player]

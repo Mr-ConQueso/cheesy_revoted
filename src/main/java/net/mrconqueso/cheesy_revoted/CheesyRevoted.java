@@ -5,6 +5,7 @@ import net.fabricmc.fabric.api.object.builder.v1.entity.FabricDefaultAttributeRe
 import net.mrconqueso.cheesy_revoted.entity.ModEntities;
 import net.mrconqueso.cheesy_revoted.entity.custom.ArmadilloEntity;
 import net.mrconqueso.cheesy_revoted.entity.custom.CrabEntity;
+import net.mrconqueso.cheesy_revoted.entity.custom.MoobloomEntity;
 import net.mrconqueso.cheesy_revoted.entity.custom.PenguinEntity;
 import net.mrconqueso.cheesy_revoted.item.ModItems;
 import net.mrconqueso.cheesy_revoted.sound.ModSounds;
@@ -22,13 +23,18 @@ public class CheesyRevoted implements ModInitializer {
 
 		LOGGER.info("Cheesy's Revoted Ideas is Initializing!");
 
+		// --------- / INITIALIZE FEATURE CLASSES / --------- //
+
 		ModItems.registerModItems();
 		ModSounds.registerSounds();
 		ModEntityGeneration.addSpawns();
 
+		// --------- / REGISTER ENTITIES / --------- //
+
 		FabricDefaultAttributeRegistry.register(ModEntities.CRAB, CrabEntity.setAttributes());
 		FabricDefaultAttributeRegistry.register(ModEntities.ARMADILLO, ArmadilloEntity.setAttributes());
 		FabricDefaultAttributeRegistry.register(ModEntities.PENGUIN, PenguinEntity.setAttributes());
+		FabricDefaultAttributeRegistry.register(ModEntities.MOOBLOOM, MoobloomEntity.setAttributes());
 
 	}
 }
