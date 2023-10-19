@@ -1,6 +1,0 @@
-{
-  "parent": "minecraft:item/generated",
-  "textures": {
-    "layer0": "cheesy_revoted:item/music_disc_crab_rave"
-  }
-}

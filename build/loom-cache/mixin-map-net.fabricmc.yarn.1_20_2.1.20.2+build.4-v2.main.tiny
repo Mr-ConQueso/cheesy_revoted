@@ -1,3 +1,0 @@
-v1	named	intermediary
-FIELD	net/mrconqueso/mixin/ClientPlayerInteractionManagerMixin	Lnet/minecraft/world/GameMode;	gameMode	field_3719
-FIELD	net/mrconqueso/mixin/GameRendererMixin	Lnet/minecraft/client/MinecraftClient;	client	field_4015
