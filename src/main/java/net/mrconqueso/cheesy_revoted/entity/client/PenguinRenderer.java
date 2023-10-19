@@ -20,6 +20,7 @@ public class PenguinRenderer extends GeoEntityRenderer<PenguinEntity> {
         return new Identifier(CheesyRevoted.MOD_ID, "textures/entity/penguin.png");
     }
 
+    // --------- / BABY RENDERER / --------- //
     @Override
     public void render(PenguinEntity entity, float entityYaw, float partialTick, MatrixStack poseStack,
                        VertexConsumerProvider bufferSource, int packedLight) {

@@ -9,7 +9,6 @@ import net.mrconqueso.cheesy_revoted.entity.custom.ArmadilloEntity;
 import software.bernie.geckolib.renderer.GeoEntityRenderer;
 
 public class ArmadilloRenderer extends GeoEntityRenderer<ArmadilloEntity> {
-
     public ArmadilloRenderer(EntityRendererFactory.Context renderManager) {
         super(renderManager, new ArmadilloModel());
     }
@@ -19,6 +18,7 @@ public class ArmadilloRenderer extends GeoEntityRenderer<ArmadilloEntity> {
         return new Identifier(CheesyRevoted.MOD_ID, "textures/entity/armadillo.png");
     }
 
+    // --------- / BABY RENDERER / --------- //
     @Override
     public void render(ArmadilloEntity entity, float entityYaw, float partialTick, MatrixStack poseStack,
                        VertexConsumerProvider bufferSource, int packedLight) {

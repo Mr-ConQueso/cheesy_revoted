@@ -27,7 +27,7 @@ public class ModEntities {
 
     public static final EntityType<PenguinEntity> PENGUIN = Registry.register(
             Registries.ENTITY_TYPE, new Identifier(CheesyRevoted.MOD_ID, "penguin"),
-            FabricEntityTypeBuilder.create(SpawnGroup.CREATURE, PenguinEntity::new)
+            FabricEntityTypeBuilder.create(SpawnGroup.WATER_CREATURE, PenguinEntity::new)
                     .dimensions(EntityDimensions.fixed(0.8125f, 1.25f)).build());
 
     public static final EntityType<MoobloomEntity> MOOBLOOM = Registry.register(

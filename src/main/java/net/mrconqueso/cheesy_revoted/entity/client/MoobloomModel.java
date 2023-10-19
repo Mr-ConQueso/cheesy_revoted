@@ -11,6 +11,8 @@ import software.bernie.geckolib.model.GeoModel;
 import software.bernie.geckolib.model.data.EntityModelData;
 
 public class MoobloomModel extends GeoModel<MoobloomEntity> {
+
+    // --------- / RESOURCES / --------- //
     @Override
     public Identifier getModelResource(MoobloomEntity animatable) {
         return new Identifier(CheesyRevoted.MOD_ID, "geo/moobloom.geo.json");
@@ -25,6 +27,8 @@ public class MoobloomModel extends GeoModel<MoobloomEntity> {
     public Identifier getAnimationResource(MoobloomEntity animatable) {
         return new Identifier(CheesyRevoted.MOD_ID, "animations/moobloom.animation.json");
     }
+
+    // --------- / ROTATE HEAD / --------- //
 
     @Override
     public void setCustomAnimations(MoobloomEntity animatable, long instanceId, AnimationState<MoobloomEntity> animationState) {

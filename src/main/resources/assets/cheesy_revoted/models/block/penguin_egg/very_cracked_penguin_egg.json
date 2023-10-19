@@ -1,0 +1,6 @@
+{
+  "parent": "cheesy_revoted:block/penguin_egg/template_penguin_egg",
+  "textures": {
+    "all": "cheesy_revoted:block/penguin_egg_very_cracked"
+  }
+}

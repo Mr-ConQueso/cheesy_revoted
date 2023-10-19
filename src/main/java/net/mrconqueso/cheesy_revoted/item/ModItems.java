@@ -1,7 +1,6 @@
 package net.mrconqueso.cheesy_revoted.item;
 
 import net.fabricmc.fabric.api.item.v1.FabricItemSettings;
-import net.fabricmc.fabric.api.itemgroup.v1.FabricItemGroupEntries;
 import net.fabricmc.fabric.api.itemgroup.v1.ItemGroupEvents;
 import net.minecraft.item.*;
 import net.minecraft.registry.Registries;
@@ -9,6 +8,7 @@ import net.minecraft.registry.Registry;
 import net.minecraft.registry.RegistryKey;
 import net.minecraft.util.Identifier;
 import net.mrconqueso.cheesy_revoted.CheesyRevoted;
+import net.mrconqueso.cheesy_revoted.blocks.ModBlocks;
 import net.mrconqueso.cheesy_revoted.entity.ModEntities;
 import net.mrconqueso.cheesy_revoted.item.custom.CrabClawItem;
 import net.mrconqueso.cheesy_revoted.item.custom_materials.CrabClawMaterial;
@@ -33,8 +33,6 @@ public class ModItems {
     // --------- / INGREDIENTS / --------- //
     public static final Item ARMADILLO_SCUTE = registerItem("armadillo_scute",
             new Item(new FabricItemSettings()));
-    public static final Item PENGUIN_EGG = registerItem("penguin_egg",
-            new Item(new FabricItemSettings()));
 
     // --------- / MUSIC DISCS / --------- //
     public static final Item CRAB_RAVE_MUSIC_DISC = registerItem("crab_rave_music_disc",
@@ -43,8 +41,9 @@ public class ModItems {
     // --------- / CREATIVE ITEM GROUPS / --------- //
     private static void addItemsToItemGroup() {
 
-        addToItemGroup(ItemGroups.INGREDIENTS, PENGUIN_EGG);
         addToItemGroup(ItemGroups.INGREDIENTS, ARMADILLO_SCUTE);
+
+        addToItemGroup(ItemGroups.NATURAL, Item.fromBlock(ModBlocks.PENGUIN_EGG));
 
         addToItemGroup(ItemGroups.SPAWN_EGGS, CRAB_SPAWN_EGG);
         addToItemGroup(ItemGroups.SPAWN_EGGS, ARMADILLO_SPAWN_EGG);

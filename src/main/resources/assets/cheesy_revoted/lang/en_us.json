@@ -12,8 +12,7 @@
   "item.cheesy_revoted.armadillo_scute": "Armadillo Scute",
 
   "entity.cheesy_revoted.penguin": "Penguin",
-  "entity.cheesy_revoted.penguin_egg": "Penguin Egg",
-  "item.cheesy_revoted.penguin_egg": "Penguin Egg",
+  "block.cheesy_revoted.penguin_egg": "Penguin Egg",
   "item.cheesy_revoted.penguin_spawn_egg": "Penguin Spawn Egg",
 
   "entity.cheesy_revoted.moobloom": "Moobloom",

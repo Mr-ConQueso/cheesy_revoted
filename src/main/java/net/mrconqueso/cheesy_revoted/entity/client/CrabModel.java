@@ -6,6 +6,8 @@ import net.mrconqueso.cheesy_revoted.entity.custom.CrabEntity;
 import software.bernie.geckolib.model.GeoModel;
 
 public class CrabModel extends GeoModel<CrabEntity> {
+
+    // --------- / RESOURCES / --------- //
     @Override
     public Identifier getModelResource(CrabEntity animatable) {
         if (animatable.isBaby()) { return new Identifier(CheesyRevoted.MOD_ID, "geo/crab_baby.geo.json"); }

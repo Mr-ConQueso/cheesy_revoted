@@ -21,6 +21,7 @@ public class CrabRenderer extends GeoEntityRenderer<CrabEntity> {
         return new Identifier(CheesyRevoted.MOD_ID, "textures/entity/crab.png");
     }
 
+    // --------- / BABY RENDERER / --------- //
     @Override
     public void render(CrabEntity entity, float entityYaw, float partialTick, MatrixStack poseStack,
                        VertexConsumerProvider bufferSource, int packedLight) {

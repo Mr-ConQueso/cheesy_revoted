@@ -11,6 +11,8 @@ import software.bernie.geckolib.model.GeoModel;
 import software.bernie.geckolib.model.data.EntityModelData;
 
 public class PenguinModel extends GeoModel<PenguinEntity> {
+
+    // --------- / RESOURCES / --------- //
     @Override
     public Identifier getModelResource(PenguinEntity animatable) {
         if (animatable.isBaby()) { return new Identifier(CheesyRevoted.MOD_ID, "geo/penguin_baby.geo.json"); }
@@ -30,6 +32,7 @@ public class PenguinModel extends GeoModel<PenguinEntity> {
         return new Identifier(CheesyRevoted.MOD_ID, "animations/penguin.animation.json");
     }
 
+    // --------- / ROTATE HEAD / --------- //
     @Override
     public void setCustomAnimations(PenguinEntity animatable, long instanceId, AnimationState<PenguinEntity> animationState) {
         CoreGeoBone head = getAnimationProcessor().getBone("head");

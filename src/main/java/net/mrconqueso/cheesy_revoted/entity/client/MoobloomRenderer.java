@@ -18,6 +18,7 @@ public class MoobloomRenderer extends GeoEntityRenderer<MoobloomEntity> {
         super(renderManager, new MoobloomModel());
     }
 
+    // --------- / FLOWER VARIANTS / --------- //
     public static final Map<MoobloomVariant, Identifier> LOCATION_BY_VARIANT =
             Util.make(Maps.newEnumMap(MoobloomVariant.class), (map) -> {
                 map.put(MoobloomVariant.DEFAULT,
@@ -59,6 +60,7 @@ public class MoobloomRenderer extends GeoEntityRenderer<MoobloomEntity> {
         return LOCATION_BY_VARIANT.get(animatable.getVariant());
     }
 
+    // --------- / BABY RENDERER / --------- //
     @Override
     public void render(MoobloomEntity entity, float entityYaw, float partialTick, MatrixStack poseStack,
                        VertexConsumerProvider bufferSource, int packedLight) {

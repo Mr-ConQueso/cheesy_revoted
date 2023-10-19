@@ -2,6 +2,7 @@ package net.mrconqueso.cheesy_revoted;
 
 import net.fabricmc.api.ModInitializer;
 import net.fabricmc.fabric.api.object.builder.v1.entity.FabricDefaultAttributeRegistry;
+import net.mrconqueso.cheesy_revoted.blocks.ModBlocks;
 import net.mrconqueso.cheesy_revoted.entity.ModEntities;
 import net.mrconqueso.cheesy_revoted.entity.custom.ArmadilloEntity;
 import net.mrconqueso.cheesy_revoted.entity.custom.CrabEntity;
@@ -26,6 +27,7 @@ public class CheesyRevoted implements ModInitializer {
 		// --------- / INITIALIZE FEATURE CLASSES / --------- //
 
 		ModItems.registerModItems();
+		ModBlocks.registertModBlocks();
 		ModSounds.registerSounds();
 		ModEntityGeneration.addSpawns();
 
