@@ -112,7 +112,7 @@ public class ArmadilloEntity extends AnimalEntity implements GeoEntity {
 
     // --------- / MODEL SETTINGS / --------- //
     @Override
-    protected Vec3d getLeashOffset() { return new Vec3d(0.0, this.getStandingEyeHeight(), this.getWidth() * 0.94f); }
+    protected Vec3d getLeashOffset() { return new Vec3d(0.0, this.getStandingEyeHeight(), this.getWidth() * -0.94f); }
 
     @Override
     protected float getActiveEyeHeight(EntityPose pose, EntityDimensions dimensions) { return dimensions.height * 0.333f; }

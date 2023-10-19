@@ -33,6 +33,8 @@ public class ModItems {
     // --------- / INGREDIENTS / --------- //
     public static final Item ARMADILLO_SCUTE = registerItem("armadillo_scute",
             new Item(new FabricItemSettings()));
+    public static final Item PENGUIN_EGG = registerItem("penguin_egg",
+            new Item(new FabricItemSettings()));
 
     // --------- / MUSIC DISCS / --------- //
     public static final Item CRAB_RAVE_MUSIC_DISC = registerItem("crab_rave_music_disc",
@@ -40,6 +42,8 @@ public class ModItems {
 
     // --------- / CREATIVE ITEM GROUPS / --------- //
     private static void addItemsToItemGroup() {
+
+        addToItemGroup(ItemGroups.INGREDIENTS, PENGUIN_EGG);
         addToItemGroup(ItemGroups.INGREDIENTS, ARMADILLO_SCUTE);
 
         addToItemGroup(ItemGroups.SPAWN_EGGS, CRAB_SPAWN_EGG);
