@@ -137,7 +137,7 @@ public class PenguinEntity extends AnimalEntity implements GeoEntity {
 
     @Deprecated
     public static boolean canSpawn(EntityType<PenguinEntity> type, WorldAccess world, SpawnReason spawnReason, BlockPos pos, Random random) {
-        return pos.getY() < world.getSeaLevel() + 4 && PenguinEggBlock.isSandBelow(world, pos) && PenguinEntity.isLightLevelValidForNaturalSpawn(world, pos);
+        return pos.getY() < world.getSeaLevel() + 4 && PenguinEggBlock.isGravelBelow(world, pos) && PenguinEntity.isLightLevelValidForNaturalSpawn(world, pos);
     }
 
     @Override
@@ -251,7 +251,7 @@ public class PenguinEntity extends AnimalEntity implements GeoEntity {
         if (!this.isLandBound() && world.getFluidState(pos).isIn(FluidTags.WATER)) {
             return 10.0f;
         }
-        if (PenguinEggBlock.isSandBelow(world, pos)) {
+        if (PenguinEggBlock.isGravelBelow(world, pos)) {
             return 10.0f;
         }
         return world.getPhototaxisFavor(pos);
@@ -440,7 +440,7 @@ public class PenguinEntity extends AnimalEntity implements GeoEntity {
             if (!world.isAir(pos.up())) {
                 return false;
             }
-            return PenguinEggBlock.isSand(world, pos);
+            return PenguinEggBlock.isGravel(world, pos);
         }
     }
 

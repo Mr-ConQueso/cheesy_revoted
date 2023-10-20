@@ -1,17 +1,16 @@
 package net.mrconqueso.cheesy_revoted.blocks.custom;
 
-import net.minecraft.block.*;
+import net.minecraft.block.Block;
+import net.minecraft.block.BlockState;
+import net.minecraft.block.ShapeContext;
 import net.minecraft.block.entity.BlockEntity;
 import net.minecraft.entity.Entity;
-import net.minecraft.entity.EntityType;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.mob.ZombieEntity;
 import net.minecraft.entity.passive.BatEntity;
-import net.minecraft.entity.passive.TurtleEntity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.ItemPlacementContext;
 import net.minecraft.item.ItemStack;
-import net.minecraft.registry.tag.BlockTags;
 import net.minecraft.server.world.ServerWorld;
 import net.minecraft.sound.SoundCategory;
 import net.minecraft.sound.SoundEvents;
@@ -29,13 +28,14 @@ import net.minecraft.world.event.GameEvent;
 import net.mrconqueso.cheesy_revoted.blocks.ModBlocks;
 import net.mrconqueso.cheesy_revoted.entity.ModEntities;
 import net.mrconqueso.cheesy_revoted.entity.custom.PenguinEntity;
+import net.mrconqueso.cheesy_revoted.util.ModTags;
 import org.jetbrains.annotations.Nullable;
 
 public class PenguinEggBlock extends Block {
     public PenguinEggBlock(Settings settings) {
         super(settings);
     }
-    private static final VoxelShape EGGS_SHAPE = Block.createCuboidShape(4.0, 0.0, 4.0, 12.0, 9.0, 12.0);
+    private static final VoxelShape EGG_SHAPE = Block.createCuboidShape(4.0, 0.0, 4.0, 12.0, 9.0, 12.0);
     public static final IntProperty HATCH = Properties.HATCH;
     public static final IntProperty EGGS = IntProperty.of("eggs", 1, 2);
 
@@ -78,7 +78,7 @@ public class PenguinEggBlock extends Block {
 
     @Override
     public void randomTick(BlockState state, ServerWorld world, BlockPos pos, Random random) {
-        if (this.shouldHatchProgress(world) && TurtleEggBlock.isSandBelow(world, pos)) {
+        if (this.shouldHatchProgress(world) && isGravelBelow(world, pos)) {
             int i = state.get(HATCH);
             if (i < 2) {
                 world.playSound(null, pos, SoundEvents.ENTITY_TURTLE_EGG_CRACK, SoundCategory.BLOCKS, 0.7f, 0.9f + random.nextFloat() * 0.2f);
@@ -100,17 +100,17 @@ public class PenguinEggBlock extends Block {
         }
     }
 
-    public static boolean isSandBelow(BlockView world, BlockPos pos) {
-        return PenguinEggBlock.isSand(world, pos.down());
+    public static boolean isGravelBelow(BlockView world, BlockPos pos) {
+        return PenguinEggBlock.isGravel(world, pos.down());
     }
 
-    public static boolean isSand(BlockView world, BlockPos pos) {
-        return world.getBlockState(pos).isIn(BlockTags.SAND);
+    public static boolean isGravel(BlockView world, BlockPos pos) {
+        return world.getBlockState(pos).isIn(ModTags.Blocks.PENGUIN_LAY_EGG_ON);
     }
 
     @Override
     public void onBlockAdded(BlockState state, World world, BlockPos pos, BlockState oldState, boolean notify) {
-        if (PenguinEggBlock.isSandBelow(world, pos) && !world.isClient) {
+        if (PenguinEggBlock.isGravelBelow(world, pos) && !world.isClient) {
             world.syncWorldEvent(WorldEvents.PLANT_FERTILIZED, pos, 0);
         }
     }
@@ -129,6 +129,7 @@ public class PenguinEggBlock extends Block {
         this.breakEgg(world, pos, state);
     }
 
+    @Deprecated
     @Override
     public boolean canReplace(BlockState state, ItemPlacementContext context) {
         if (!context.shouldCancelInteraction() && context.getStack().isOf(this.asItem()) && state.get(EGGS) < 4) {
@@ -147,9 +148,10 @@ public class PenguinEggBlock extends Block {
         return super.getPlacementState(ctx);
     }
 
+    @Deprecated
     @Override
     public VoxelShape getOutlineShape(BlockState state, BlockView world, BlockPos pos, ShapeContext context) {
-        return EGGS_SHAPE;
+        return EGG_SHAPE;
     }
 
     @Override

@@ -9,6 +9,8 @@ import net.minecraft.item.Item;
 import net.minecraft.item.ItemGroup;
 import net.minecraft.registry.Registries;
 import net.minecraft.registry.Registry;
+import net.minecraft.registry.tag.BlockTags;
+import net.minecraft.registry.tag.TagKey;
 import net.minecraft.util.Identifier;
 import net.mrconqueso.cheesy_revoted.CheesyRevoted;
 import net.mrconqueso.cheesy_revoted.blocks.custom.PenguinEggBlock;
