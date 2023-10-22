@@ -35,10 +35,13 @@ public class PenguinEggBlock extends Block {
     public PenguinEggBlock(Settings settings) {
         super(settings);
     }
+
+    // --------- / VARIABLES / --------- //
     private static final VoxelShape EGG_SHAPE = Block.createCuboidShape(4.0, 0.0, 4.0, 12.0, 9.0, 12.0);
     public static final IntProperty HATCH = Properties.HATCH;
     public static final IntProperty EGGS = IntProperty.of("eggs", 1, 2);
 
+    // --------- / INTERACTIONS / --------- //
     @Override
     public void onSteppedOn(World world, BlockPos pos, BlockState state, Entity entity) {
         if (!entity.bypassesSteppingEffects()) {
@@ -55,6 +58,7 @@ public class PenguinEggBlock extends Block {
         super.onLandedUpon(world, state, pos, entity, fallDistance);
     }
 
+    // --------- / UTIL METHODS / --------- //
     private void tryBreakEgg(World world, BlockState state, BlockPos pos, Entity entity, int inverseChance) {
         if (!this.breaksEgg(world, entity)) {
             return;
@@ -115,12 +119,14 @@ public class PenguinEggBlock extends Block {
         }
     }
 
-    private boolean shouldHatchProgress(World world) {
-        float f = world.getSkyAngle(1.0f);
-        if ((double)f < 0.69 && (double)f > 0.65) {
-            return true;
+    private boolean breaksEgg(World world, Entity entity) {
+        if (entity instanceof PenguinEntity || entity instanceof BatEntity) {
+            return false;
         }
-        return world.random.nextInt(500) == 0;
+        if (entity instanceof LivingEntity) {
+            return entity instanceof PlayerEntity || world.getGameRules().getBoolean(GameRules.DO_MOB_GRIEFING);
+        }
+        return false;
     }
 
     @Override
@@ -138,6 +144,17 @@ public class PenguinEggBlock extends Block {
         return super.canReplace(state, context);
     }
 
+    // --------- / HATCHING / --------- //
+    private boolean shouldHatchProgress(World world) {
+        float f = world.getSkyAngle(1.0f);
+        if ((double)f < 0.69 && (double)f > 0.65) {
+            return true;
+        }
+        return world.random.nextInt(500) == 0;
+    }
+
+    // --------- / BLOCK PROPERTIES / --------- //
+
     @Override
     @Nullable
     public BlockState getPlacementState(ItemPlacementContext ctx) {
@@ -148,24 +165,14 @@ public class PenguinEggBlock extends Block {
         return super.getPlacementState(ctx);
     }
 
-    @Deprecated
-    @Override
-    public VoxelShape getOutlineShape(BlockState state, BlockView world, BlockPos pos, ShapeContext context) {
-        return EGG_SHAPE;
-    }
-
     @Override
     protected void appendProperties(StateManager.Builder<Block, BlockState> builder) {
         builder.add(HATCH, EGGS);
     }
 
-    private boolean breaksEgg(World world, Entity entity) {
-        if (entity instanceof PenguinEntity || entity instanceof BatEntity) {
-            return false;
-        }
-        if (entity instanceof LivingEntity) {
-            return entity instanceof PlayerEntity || world.getGameRules().getBoolean(GameRules.DO_MOB_GRIEFING);
-        }
-        return false;
+    @Deprecated
+    @Override
+    public VoxelShape getOutlineShape(BlockState state, BlockView world, BlockPos pos, ShapeContext context) {
+        return EGG_SHAPE;
     }
 }

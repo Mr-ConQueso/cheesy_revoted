@@ -70,6 +70,7 @@ public class CrabEntity extends AnimalEntity implements GeoEntity {
     }
 
     // --------- / ANIMATIONS / --------- //
+
     @Override
     public void registerControllers(AnimatableManager.ControllerRegistrar controllers) {
         controllers.add(DefaultAnimations.genericWalkIdleController(this));
@@ -152,7 +153,7 @@ public class CrabEntity extends AnimalEntity implements GeoEntity {
         Entity entity = source.getAttacker();
         if (entity instanceof CreeperEntity && (creeperEntity = (CreeperEntity)entity).shouldDropHead()) {
             creeperEntity.onHeadDropped();
-            this.dropItem(ModItems.CRAB_RAVE_MUSIC_DISC);
+            this.dropItem(ModItems.MUSIC_DISC_CRAB_RAVE);
         }
     }
 }

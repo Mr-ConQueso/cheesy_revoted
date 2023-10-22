@@ -30,9 +30,14 @@ import org.jetbrains.annotations.Nullable;
 import org.joml.Vector3f;
 import software.bernie.geckolib.animatable.GeoEntity;
 import software.bernie.geckolib.constant.DefaultAnimations;
+import software.bernie.geckolib.core.animatable.GeoAnimatable;
 import software.bernie.geckolib.core.animatable.instance.AnimatableInstanceCache;
 import software.bernie.geckolib.core.animatable.instance.SingletonAnimatableInstanceCache;
 import software.bernie.geckolib.core.animation.AnimatableManager;
+import software.bernie.geckolib.core.animation.AnimationController;
+import software.bernie.geckolib.core.animation.AnimationState;
+import software.bernie.geckolib.core.animation.RawAnimation;
+import software.bernie.geckolib.core.object.PlayState;
 
 public class ArmadilloEntity extends AnimalEntity implements GeoEntity {
     public ArmadilloEntity(EntityType<? extends AnimalEntity> entityType, World world) {
@@ -75,6 +80,7 @@ public class ArmadilloEntity extends AnimalEntity implements GeoEntity {
         }
     }
     // --------- / ANIMATIONS / --------- //
+
     @Override
     public void registerControllers(AnimatableManager.ControllerRegistrar controllers) {
         controllers.add(DefaultAnimations.genericWalkIdleController(this));

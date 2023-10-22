@@ -7,12 +7,15 @@ import net.minecraft.registry.Registries;
 import net.minecraft.registry.Registry;
 import net.minecraft.registry.RegistryKey;
 import net.minecraft.util.Identifier;
+import net.minecraft.util.collection.DefaultedList;
 import net.mrconqueso.cheesy_revoted.CheesyRevoted;
 import net.mrconqueso.cheesy_revoted.blocks.ModBlocks;
 import net.mrconqueso.cheesy_revoted.entity.ModEntities;
 import net.mrconqueso.cheesy_revoted.item.custom.CrabClawItem;
 import net.mrconqueso.cheesy_revoted.item.custom_materials.CrabClawMaterial;
 import net.mrconqueso.cheesy_revoted.sound.ModSounds;
+
+import java.util.List;
 
 public class ModItems {
 
@@ -35,27 +38,29 @@ public class ModItems {
             new Item(new FabricItemSettings()));
 
     // --------- / MUSIC DISCS / --------- //
-    public static final Item CRAB_RAVE_MUSIC_DISC = registerItem("crab_rave_music_disc",
+    public static final Item MUSIC_DISC_CRAB_RAVE = registerItem("music_disc_crab_rave",
             new MusicDiscItem(6, ModSounds.CRAB_RAVE, new FabricItemSettings().maxCount(1), 132));
 
     // --------- / CREATIVE ITEM GROUPS / --------- //
     private static void addItemsToItemGroup() {
 
-        addToItemGroup(ItemGroups.INGREDIENTS, ARMADILLO_SCUTE);
+        addToItemGroup(ItemGroups.INGREDIENTS, ARMADILLO_SCUTE, Items.SCUTE);
 
-        addToItemGroup(ItemGroups.NATURAL, Item.fromBlock(ModBlocks.PENGUIN_EGG));
+        addToItemGroup(ItemGroups.NATURAL, Item.fromBlock(ModBlocks.PENGUIN_EGG), Items.SNIFFER_EGG);
 
-        addToItemGroup(ItemGroups.SPAWN_EGGS, CRAB_SPAWN_EGG);
-        addToItemGroup(ItemGroups.SPAWN_EGGS, ARMADILLO_SPAWN_EGG);
-        addToItemGroup(ItemGroups.SPAWN_EGGS, PENGUIN_SPAWN_EGG);
-        addToItemGroup(ItemGroups.SPAWN_EGGS, MOOBLOOM_SPAWN_EGG);
+        addToItemGroup(ItemGroups.SPAWN_EGGS, CRAB_SPAWN_EGG, Items.COW_SPAWN_EGG);
+        addToItemGroup(ItemGroups.SPAWN_EGGS, ARMADILLO_SPAWN_EGG, Items.ALLAY_SPAWN_EGG);
+        addToItemGroup(ItemGroups.SPAWN_EGGS, PENGUIN_SPAWN_EGG, Items.PARROT_SPAWN_EGG);
+        addToItemGroup(ItemGroups.SPAWN_EGGS, MOOBLOOM_SPAWN_EGG, Items.MAGMA_CUBE_SPAWN_EGG);
 
-        addToItemGroup(ItemGroups.TOOLS, CRAB_CLAW);
-        addToItemGroup(ItemGroups.TOOLS, CRAB_RAVE_MUSIC_DISC);
+        addToItemGroup(ItemGroups.TOOLS, CRAB_CLAW, Items.SHEARS);
+        addToItemGroup(ItemGroups.TOOLS, MUSIC_DISC_CRAB_RAVE, Items.MUSIC_DISC_PIGSTEP);
     }
 
-    private static void addToItemGroup(RegistryKey<ItemGroup> itemGroup, Item item) {
-        ItemGroupEvents.modifyEntriesEvent(itemGroup).register(entries -> entries.add(item));
+    private static void addToItemGroup(RegistryKey<ItemGroup> itemGroup, Item item, Item itemBefore) {
+        ItemGroupEvents.modifyEntriesEvent(itemGroup).register(entries -> {
+            entries.addAfter(itemBefore, item);
+        });
     }
 
     // --------- / REGISTER ITEMS / --------- //

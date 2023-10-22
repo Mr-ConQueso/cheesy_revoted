@@ -1,0 +1,22 @@
+{
+  "entity.cheesy_revoted.crab": "Cangrejo",
+  "item.cheesy_revoted.crab_spawn_egg": "Generar cangrejo",
+  "item.cheesy_revoted.crab_claw": "Pinza de cangrejo",
+  "item.cheesy_revoted.crab_claw.tooltip": "En cualquier mano:",
+  "item.cheesy_revoted.crab_claw.tooltip_2": " +3 Rango",
+  "item.cheesy_revoted.music_disc_crab_rave": "§bDisco de música",
+  "item.cheesy_revoted.music_disc_crab_rave.desc": "8 Bit Universe - Crab Rave",
+
+
+  "entity.cheesy_revoted.armadillo": "Armadillo",
+  "item.cheesy_revoted.armadillo_spawn_egg": "Generar armadillo",
+
+  "item.cheesy_revoted.armadillo_scute": "Escama de armadillo",
+
+  "entity.cheesy_revoted.penguin": "pingüino",
+  "block.cheesy_revoted.penguin_egg": "Huevo de pingüino",
+  "item.cheesy_revoted.penguin_spawn_egg": "Generar pingüino",
+
+  "entity.cheesy_revoted.moobloom": "Moobloom",
+  "item.cheesy_revoted.moobloom_spawn_egg": "Generar moobloom"
+}

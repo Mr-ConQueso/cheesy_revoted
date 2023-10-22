@@ -1,6 +1,7 @@
 {
   "values": [
     "minecraft:gravel",
-    "minecraft:stone"
+    "minecraft:stone",
+    "minecraft:suspicious_gravel"
   ]
 }
