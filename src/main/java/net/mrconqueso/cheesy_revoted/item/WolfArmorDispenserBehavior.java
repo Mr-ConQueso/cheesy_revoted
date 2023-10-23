@@ -1,4 +1,4 @@
-package net.mrconqueso.cheesy_revoted.item.custom;
+package net.mrconqueso.cheesy_revoted.item;
 
 import net.minecraft.block.DispenserBlock;
 import net.minecraft.block.dispenser.FallibleItemDispenserBehavior;

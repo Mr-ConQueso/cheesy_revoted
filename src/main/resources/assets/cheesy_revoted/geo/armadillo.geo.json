@@ -12,7 +12,12 @@
 			},
 			"bones": [
 				{
+					"name": "armadillo_turn",
+					"pivot": [0, 8.5, 0]
+				},
+				{
 					"name": "armadillo",
+					"parent": "armadillo_turn",
 					"pivot": [0, 1.32336, 9.64],
 					"cubes": [
 						{

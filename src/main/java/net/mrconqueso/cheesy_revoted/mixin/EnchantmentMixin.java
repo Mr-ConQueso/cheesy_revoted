@@ -3,7 +3,7 @@ package net.mrconqueso.cheesy_revoted.mixin;
 import net.minecraft.enchantment.Enchantment;
 import net.minecraft.enchantment.ProtectionEnchantment;
 import net.minecraft.item.ItemStack;
-import net.mrconqueso.cheesy_revoted.item.custom.WolfArmorItem;
+import net.mrconqueso.cheesy_revoted.item.WolfArmorItem;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;

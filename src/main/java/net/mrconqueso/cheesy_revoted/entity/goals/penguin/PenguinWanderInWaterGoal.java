@@ -4,7 +4,7 @@ import net.minecraft.block.Blocks;
 import net.minecraft.entity.ai.goal.MoveToTargetPosGoal;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.WorldView;
-import net.mrconqueso.cheesy_revoted.entity.custom.PenguinEntity;
+import net.mrconqueso.cheesy_revoted.entity.PenguinEntity;
 
 public class PenguinWanderInWaterGoal extends MoveToTargetPosGoal {
     private final PenguinEntity penguin;

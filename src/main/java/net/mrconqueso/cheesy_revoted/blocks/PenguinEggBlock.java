@@ -1,4 +1,4 @@
-package net.mrconqueso.cheesy_revoted.blocks.custom;
+package net.mrconqueso.cheesy_revoted.blocks;
 
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
@@ -25,10 +25,10 @@ import net.minecraft.world.GameRules;
 import net.minecraft.world.World;
 import net.minecraft.world.WorldEvents;
 import net.minecraft.world.event.GameEvent;
-import net.mrconqueso.cheesy_revoted.blocks.ModBlocks;
-import net.mrconqueso.cheesy_revoted.entity.ModEntities;
-import net.mrconqueso.cheesy_revoted.entity.custom.PenguinEntity;
-import net.mrconqueso.cheesy_revoted.util.ModTags;
+import net.mrconqueso.cheesy_revoted.registry.ModBlocks;
+import net.mrconqueso.cheesy_revoted.registry.ModEntities;
+import net.mrconqueso.cheesy_revoted.entity.PenguinEntity;
+import net.mrconqueso.cheesy_revoted.registry.ModTags;
 import org.jetbrains.annotations.Nullable;
 
 public class PenguinEggBlock extends Block {

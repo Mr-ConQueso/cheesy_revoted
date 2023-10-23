@@ -7,7 +7,7 @@ import net.minecraft.entity.SpawnRestriction;
 import net.minecraft.entity.passive.AnimalEntity;
 import net.minecraft.world.Heightmap;
 import net.minecraft.world.biome.BiomeKeys;
-import net.mrconqueso.cheesy_revoted.entity.ModEntities;
+import net.mrconqueso.cheesy_revoted.registry.ModEntities;
 
 public class ModEntityGeneration {
     public static void addSpawns() {

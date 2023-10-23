@@ -1,4 +1,4 @@
-package net.mrconqueso.cheesy_revoted.blocks;
+package net.mrconqueso.cheesy_revoted.registry;
 
 import net.fabricmc.fabric.api.item.v1.FabricItemSettings;
 import net.fabricmc.fabric.api.object.builder.v1.block.FabricBlockSettings;
@@ -6,14 +6,11 @@ import net.minecraft.block.Block;
 import net.minecraft.block.Blocks;
 import net.minecraft.item.BlockItem;
 import net.minecraft.item.Item;
-import net.minecraft.item.ItemGroup;
 import net.minecraft.registry.Registries;
 import net.minecraft.registry.Registry;
-import net.minecraft.registry.tag.BlockTags;
-import net.minecraft.registry.tag.TagKey;
 import net.minecraft.util.Identifier;
 import net.mrconqueso.cheesy_revoted.CheesyRevoted;
-import net.mrconqueso.cheesy_revoted.blocks.custom.PenguinEggBlock;
+import net.mrconqueso.cheesy_revoted.blocks.PenguinEggBlock;
 
 public class ModBlocks {
 

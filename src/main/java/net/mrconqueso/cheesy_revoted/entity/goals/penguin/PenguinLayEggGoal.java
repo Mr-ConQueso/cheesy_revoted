@@ -10,9 +10,9 @@ import net.minecraft.util.math.random.Random;
 import net.minecraft.world.World;
 import net.minecraft.world.WorldView;
 import net.minecraft.world.event.GameEvent;
-import net.mrconqueso.cheesy_revoted.blocks.ModBlocks;
-import net.mrconqueso.cheesy_revoted.blocks.custom.PenguinEggBlock;
-import net.mrconqueso.cheesy_revoted.entity.custom.PenguinEntity;
+import net.mrconqueso.cheesy_revoted.registry.ModBlocks;
+import net.mrconqueso.cheesy_revoted.blocks.PenguinEggBlock;
+import net.mrconqueso.cheesy_revoted.entity.PenguinEntity;
 
 public class PenguinLayEggGoal extends MoveToTargetPosGoal {
     private final PenguinEntity penguin;

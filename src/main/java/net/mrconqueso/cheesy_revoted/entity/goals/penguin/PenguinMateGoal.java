@@ -7,7 +7,7 @@ import net.minecraft.server.network.ServerPlayerEntity;
 import net.minecraft.stat.Stats;
 import net.minecraft.util.math.random.Random;
 import net.minecraft.world.GameRules;
-import net.mrconqueso.cheesy_revoted.entity.custom.PenguinEntity;
+import net.mrconqueso.cheesy_revoted.entity.PenguinEntity;
 
 public class PenguinMateGoal extends AnimalMateGoal {
     private final PenguinEntity penguin;

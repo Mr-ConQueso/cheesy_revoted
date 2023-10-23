@@ -2,7 +2,7 @@ package net.mrconqueso.cheesy_revoted.entity.goals.penguin;
 
 import net.minecraft.entity.ai.goal.EscapeDangerGoal;
 import net.minecraft.util.math.BlockPos;
-import net.mrconqueso.cheesy_revoted.entity.custom.PenguinEntity;
+import net.mrconqueso.cheesy_revoted.entity.PenguinEntity;
 
 public class PenguinEscapeDangerGoal extends EscapeDangerGoal {
     public PenguinEscapeDangerGoal(PenguinEntity penguin, double speed) {

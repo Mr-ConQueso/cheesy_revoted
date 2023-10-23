@@ -8,7 +8,7 @@ import net.minecraft.client.util.ModelIdentifier;
 import net.minecraft.client.util.math.MatrixStack;
 import net.minecraft.item.ItemStack;
 import net.mrconqueso.cheesy_revoted.CheesyRevoted;
-import net.mrconqueso.cheesy_revoted.item.ModItems;
+import net.mrconqueso.cheesy_revoted.registry.ModItems;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.ModifyVariable;

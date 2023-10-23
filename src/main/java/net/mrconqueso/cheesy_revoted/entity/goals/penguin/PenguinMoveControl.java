@@ -3,7 +3,7 @@ package net.mrconqueso.cheesy_revoted.entity.goals.penguin;
 import net.minecraft.entity.ai.control.MoveControl;
 import net.minecraft.entity.attribute.EntityAttributes;
 import net.minecraft.util.math.MathHelper;
-import net.mrconqueso.cheesy_revoted.entity.custom.PenguinEntity;
+import net.mrconqueso.cheesy_revoted.entity.PenguinEntity;
 
 public class PenguinMoveControl extends MoveControl {
     private final PenguinEntity penguin;

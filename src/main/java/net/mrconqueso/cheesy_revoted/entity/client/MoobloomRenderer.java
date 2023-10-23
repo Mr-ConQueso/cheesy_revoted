@@ -7,7 +7,7 @@ import net.minecraft.client.util.math.MatrixStack;
 import net.minecraft.util.Identifier;
 import net.minecraft.util.Util;
 import net.mrconqueso.cheesy_revoted.CheesyRevoted;
-import net.mrconqueso.cheesy_revoted.entity.custom.MoobloomEntity;
+import net.mrconqueso.cheesy_revoted.entity.MoobloomEntity;
 import net.mrconqueso.cheesy_revoted.entity.variants.MoobloomVariant;
 import software.bernie.geckolib.renderer.GeoEntityRenderer;
 

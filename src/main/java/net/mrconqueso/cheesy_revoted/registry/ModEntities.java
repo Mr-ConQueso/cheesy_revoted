@@ -1,4 +1,4 @@
-package net.mrconqueso.cheesy_revoted.entity;
+package net.mrconqueso.cheesy_revoted.registry;
 
 import net.fabricmc.fabric.api.object.builder.v1.entity.FabricEntityTypeBuilder;
 import net.minecraft.entity.EntityDimensions;
@@ -8,10 +8,10 @@ import net.minecraft.registry.Registries;
 import net.minecraft.registry.Registry;
 import net.minecraft.util.Identifier;
 import net.mrconqueso.cheesy_revoted.CheesyRevoted;
-import net.mrconqueso.cheesy_revoted.entity.custom.ArmadilloEntity;
-import net.mrconqueso.cheesy_revoted.entity.custom.CrabEntity;
-import net.mrconqueso.cheesy_revoted.entity.custom.MoobloomEntity;
-import net.mrconqueso.cheesy_revoted.entity.custom.PenguinEntity;
+import net.mrconqueso.cheesy_revoted.entity.ArmadilloEntity;
+import net.mrconqueso.cheesy_revoted.entity.CrabEntity;
+import net.mrconqueso.cheesy_revoted.entity.MoobloomEntity;
+import net.mrconqueso.cheesy_revoted.entity.PenguinEntity;
 
 public class ModEntities {
 

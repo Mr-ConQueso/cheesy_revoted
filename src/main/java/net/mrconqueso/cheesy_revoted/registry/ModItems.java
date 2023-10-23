@@ -1,4 +1,4 @@
-package net.mrconqueso.cheesy_revoted.item;
+package net.mrconqueso.cheesy_revoted.registry;
 
 import net.fabricmc.fabric.api.item.v1.FabricItemSettings;
 import net.fabricmc.fabric.api.itemgroup.v1.ItemGroupEvents;
@@ -7,16 +7,10 @@ import net.minecraft.registry.Registries;
 import net.minecraft.registry.Registry;
 import net.minecraft.registry.RegistryKey;
 import net.minecraft.util.Identifier;
-import net.minecraft.util.collection.DefaultedList;
 import net.mrconqueso.cheesy_revoted.CheesyRevoted;
-import net.mrconqueso.cheesy_revoted.blocks.ModBlocks;
-import net.mrconqueso.cheesy_revoted.entity.ModEntities;
-import net.mrconqueso.cheesy_revoted.item.custom.CrabClawItem;
-import net.mrconqueso.cheesy_revoted.item.custom.WolfArmorItem;
+import net.mrconqueso.cheesy_revoted.item.CrabClawItem;
+import net.mrconqueso.cheesy_revoted.item.WolfArmorItem;
 import net.mrconqueso.cheesy_revoted.item.custom_materials.CrabClawMaterial;
-import net.mrconqueso.cheesy_revoted.sound.ModSounds;
-
-import java.util.List;
 
 public class ModItems {
 

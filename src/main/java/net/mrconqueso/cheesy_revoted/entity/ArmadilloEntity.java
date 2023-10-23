@@ -1,4 +1,4 @@
-package net.mrconqueso.cheesy_revoted.entity.custom;
+package net.mrconqueso.cheesy_revoted.entity;
 
 import net.minecraft.block.BlockState;
 import net.minecraft.entity.Entity;
@@ -24,20 +24,17 @@ import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.Vec3d;
 import net.minecraft.world.GameRules;
 import net.minecraft.world.World;
-import net.mrconqueso.cheesy_revoted.entity.ModEntities;
-import net.mrconqueso.cheesy_revoted.item.ModItems;
+import net.mrconqueso.cheesy_revoted.registry.ModEntities;
+import net.mrconqueso.cheesy_revoted.registry.ModItems;
 import org.jetbrains.annotations.Nullable;
 import org.joml.Vector3f;
 import software.bernie.geckolib.animatable.GeoEntity;
-import software.bernie.geckolib.constant.DefaultAnimations;
 import software.bernie.geckolib.core.animatable.GeoAnimatable;
 import software.bernie.geckolib.core.animatable.instance.AnimatableInstanceCache;
 import software.bernie.geckolib.core.animatable.instance.SingletonAnimatableInstanceCache;
 import software.bernie.geckolib.core.animation.AnimatableManager;
 import software.bernie.geckolib.core.animation.AnimationController;
-import software.bernie.geckolib.core.animation.AnimationState;
 import software.bernie.geckolib.core.animation.RawAnimation;
-import software.bernie.geckolib.core.object.PlayState;
 
 public class ArmadilloEntity extends AnimalEntity implements GeoEntity {
     public ArmadilloEntity(EntityType<? extends AnimalEntity> entityType, World world) {
@@ -52,7 +49,7 @@ public class ArmadilloEntity extends AnimalEntity implements GeoEntity {
     public static DefaultAttributeContainer.Builder setAttributes() {
         return AnimalEntity.createMobAttributes()
                 .add(EntityAttributes.GENERIC_MAX_HEALTH, 20.0f)
-                .add(EntityAttributes.GENERIC_MOVEMENT_SPEED, 0.25f);
+                .add(EntityAttributes.GENERIC_MOVEMENT_SPEED, 0.20f);
     }
     @Override
     protected void initGoals() {
@@ -81,9 +78,29 @@ public class ArmadilloEntity extends AnimalEntity implements GeoEntity {
     }
     // --------- / ANIMATIONS / --------- //
 
+    public static final RawAnimation IDLE = RawAnimation.begin().thenLoop("misc.idle");
+    public static final RawAnimation WALK = RawAnimation.begin().thenLoop("move.walk");
+    public static final RawAnimation RUN = RawAnimation.begin().thenLoop("move.run");
+
     @Override
     public void registerControllers(AnimatableManager.ControllerRegistrar controllers) {
-        controllers.add(DefaultAnimations.genericWalkIdleController(this));
+        //controllers.add(DefaultAnimations.genericWalkIdleController(this));
+        controllers.add(armadilloAnimationController(this));
+    }
+
+    public <T extends Entity & GeoAnimatable> AnimationController<T> armadilloAnimationController(T entity) {
+        return new AnimationController<T>(entity, "Run/Walk/Idle", 1, state -> {
+
+            if (this.isSprinting()) {
+                return state.setAndContinue(RUN);
+            }
+            if (state.isMoving()) {
+                return state.setAndContinue(WALK);
+            }
+            else {
+                return state.setAndContinue(IDLE);
+            }
+        });
     }
 
     @Override

@@ -1,4 +1,4 @@
-package net.mrconqueso.cheesy_revoted.entity.custom;
+package net.mrconqueso.cheesy_revoted.entity;
 
 import net.minecraft.block.BlockState;
 import net.minecraft.block.Blocks;
@@ -29,20 +29,16 @@ import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.Vec3d;
 import net.minecraft.util.math.random.Random;
 import net.minecraft.world.*;
-import net.mrconqueso.cheesy_revoted.CheesyRevoted;
-import net.mrconqueso.cheesy_revoted.blocks.custom.PenguinEggBlock;
-import net.mrconqueso.cheesy_revoted.entity.ModEntities;
+import net.mrconqueso.cheesy_revoted.blocks.PenguinEggBlock;
+import net.mrconqueso.cheesy_revoted.registry.ModEntities;
 import net.mrconqueso.cheesy_revoted.entity.goals.penguin.*;
 import org.jetbrains.annotations.Nullable;
 import org.joml.Vector3f;
 import software.bernie.geckolib.animatable.GeoEntity;
-import software.bernie.geckolib.constant.DefaultAnimations;
 import software.bernie.geckolib.core.animatable.GeoAnimatable;
 import software.bernie.geckolib.core.animatable.instance.AnimatableInstanceCache;
 import software.bernie.geckolib.core.animatable.instance.SingletonAnimatableInstanceCache;
 import software.bernie.geckolib.core.animation.*;
-import software.bernie.geckolib.core.animation.AnimationState;
-import software.bernie.geckolib.core.object.PlayState;
 
 public class PenguinEntity extends AnimalEntity implements GeoEntity {
     public PenguinEntity(EntityType<? extends PenguinEntity> entityType, World world) {

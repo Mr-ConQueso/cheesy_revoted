@@ -2,7 +2,7 @@ package net.mrconqueso.cheesy_revoted.item.custom_materials;
 
 import net.minecraft.item.ToolMaterial;
 import net.minecraft.recipe.Ingredient;
-import net.mrconqueso.cheesy_revoted.item.ModItems;
+import net.mrconqueso.cheesy_revoted.registry.ModItems;
 
 public class CrabClawMaterial implements ToolMaterial {
     public static final CrabClawMaterial CRAB_CLAW_MATERIAL = new CrabClawMaterial();

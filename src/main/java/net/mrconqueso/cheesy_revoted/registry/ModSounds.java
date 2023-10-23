@@ -1,4 +1,4 @@
-package net.mrconqueso.cheesy_revoted.sound;
+package net.mrconqueso.cheesy_revoted.registry;
 
 import net.minecraft.registry.Registries;
 import net.minecraft.registry.Registry;

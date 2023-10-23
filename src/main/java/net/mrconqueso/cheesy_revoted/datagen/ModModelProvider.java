@@ -7,7 +7,7 @@ import net.minecraft.data.client.ItemModelGenerator;
 import net.minecraft.data.client.Model;
 import net.minecraft.data.client.Models;
 import net.minecraft.util.Identifier;
-import net.mrconqueso.cheesy_revoted.item.ModItems;
+import net.mrconqueso.cheesy_revoted.registry.ModItems;
 
 import java.util.Optional;
 

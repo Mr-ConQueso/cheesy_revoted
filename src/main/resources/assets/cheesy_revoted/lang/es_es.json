@@ -13,7 +13,7 @@
   "item.cheesy_revoted.wolf_armor": "Armadura de lobo",
   "item.cheesy_revoted.wolf_armor.tooltip.when_equipped": "Equipada en un lobo:",
   "item.cheesy_revoted.wolf_armor.tooltip.bonus": " +%s Armadura",
-  "subtitles.armor.wolf": "Equipa armadura de lobo",
+  "subtitles.armor.wolf": "Equipa armadura a un lobo",
 
   "item.cheesy_revoted.armadillo_scute": "Escama de armadillo",
 
@@ -22,5 +22,5 @@
   "item.cheesy_revoted.penguin_spawn_egg": "Generar pingüino",
 
   "entity.cheesy_revoted.moobloom": "Moobloom",
-  "item.cheesy_revoted.moobloom_spawn_egg": "Generar moobloom",
+  "item.cheesy_revoted.moobloom_spawn_egg": "Generar moobloom"
 }

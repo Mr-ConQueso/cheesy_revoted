@@ -1,7 +1,7 @@
 package net.mrconqueso.cheesy_revoted.entity.goals.penguin;
 
 import net.minecraft.entity.ai.goal.WanderAroundGoal;
-import net.mrconqueso.cheesy_revoted.entity.custom.PenguinEntity;
+import net.mrconqueso.cheesy_revoted.entity.PenguinEntity;
 
 public class PenguinWanderOnLandGoal extends WanderAroundGoal {
     private final PenguinEntity penguin;

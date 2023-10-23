@@ -1,4 +1,4 @@
-package net.mrconqueso.cheesy_revoted.entity.custom;
+package net.mrconqueso.cheesy_revoted.entity;
 
 import net.minecraft.block.BlockState;
 import net.minecraft.entity.*;
@@ -27,7 +27,7 @@ import net.minecraft.util.math.Vec3d;
 import net.minecraft.world.LocalDifficulty;
 import net.minecraft.world.ServerWorldAccess;
 import net.minecraft.world.World;
-import net.mrconqueso.cheesy_revoted.entity.ModEntities;
+import net.mrconqueso.cheesy_revoted.registry.ModEntities;
 import net.mrconqueso.cheesy_revoted.entity.variants.MoobloomVariant;
 import org.jetbrains.annotations.Nullable;
 import org.joml.Vector3f;

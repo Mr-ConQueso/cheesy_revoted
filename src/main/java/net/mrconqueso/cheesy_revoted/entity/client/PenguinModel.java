@@ -3,7 +3,7 @@ package net.mrconqueso.cheesy_revoted.entity.client;
 import net.minecraft.util.Identifier;
 import net.minecraft.util.math.MathHelper;
 import net.mrconqueso.cheesy_revoted.CheesyRevoted;
-import net.mrconqueso.cheesy_revoted.entity.custom.PenguinEntity;
+import net.mrconqueso.cheesy_revoted.entity.PenguinEntity;
 import software.bernie.geckolib.constant.DataTickets;
 import software.bernie.geckolib.core.animatable.model.CoreGeoBone;
 import software.bernie.geckolib.core.animation.AnimationState;

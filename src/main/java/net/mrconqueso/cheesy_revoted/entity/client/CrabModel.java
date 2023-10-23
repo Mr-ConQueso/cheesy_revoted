@@ -2,7 +2,7 @@ package net.mrconqueso.cheesy_revoted.entity.client;
 
 import net.minecraft.util.Identifier;
 import net.mrconqueso.cheesy_revoted.CheesyRevoted;
-import net.mrconqueso.cheesy_revoted.entity.custom.CrabEntity;
+import net.mrconqueso.cheesy_revoted.entity.CrabEntity;
 import software.bernie.geckolib.model.GeoModel;
 
 public class CrabModel extends GeoModel<CrabEntity> {

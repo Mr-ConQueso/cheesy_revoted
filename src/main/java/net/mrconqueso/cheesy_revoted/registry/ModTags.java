@@ -1,4 +1,4 @@
-package net.mrconqueso.cheesy_revoted.util;
+package net.mrconqueso.cheesy_revoted.registry;
 
 import net.minecraft.block.Block;
 import net.minecraft.item.Item;

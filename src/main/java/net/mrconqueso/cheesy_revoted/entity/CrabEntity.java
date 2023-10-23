@@ -1,4 +1,4 @@
-package net.mrconqueso.cheesy_revoted.entity.custom;
+package net.mrconqueso.cheesy_revoted.entity;
 
 import net.minecraft.block.BlockState;
 import net.minecraft.entity.Entity;
@@ -23,8 +23,8 @@ import net.minecraft.util.ActionResult;
 import net.minecraft.util.Hand;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
-import net.mrconqueso.cheesy_revoted.entity.ModEntities;
-import net.mrconqueso.cheesy_revoted.item.ModItems;
+import net.mrconqueso.cheesy_revoted.registry.ModEntities;
+import net.mrconqueso.cheesy_revoted.registry.ModItems;
 import org.jetbrains.annotations.Nullable;
 import org.joml.Vector3f;
 import software.bernie.geckolib.animatable.GeoEntity;

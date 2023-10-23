@@ -17,7 +17,7 @@ import net.minecraft.item.ItemStack;
 import net.mrconqueso.cheesy_revoted.CheesyRevoted;
 import net.mrconqueso.cheesy_revoted.CheesyRevotedClient;
 import net.mrconqueso.cheesy_revoted.client.WolfArmorModel;
-import net.mrconqueso.cheesy_revoted.item.custom.WolfArmorItem;
+import net.mrconqueso.cheesy_revoted.item.WolfArmorItem;
 
 @Environment(EnvType.CLIENT)
 public class WolfArmorFeatureRenderer extends FeatureRenderer<WolfEntity, WolfEntityModel<WolfEntity>> {

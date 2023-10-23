@@ -2,7 +2,7 @@
   "entity.cheesy_revoted.crab": "Crab",
   "item.cheesy_revoted.crab_spawn_egg": "Crab Spawn Egg",
   "item.cheesy_revoted.crab_claw": "Crab Claw",
-  "item.cheesy_revoted.crab_claw.tooltip.when_held": "When held:",
+  "item.cheesy_revoted.crab_claw.tooltip.when_held": "When on Any Hand:",
   "item.cheesy_revoted.crab_claw.tooltip.bonus": " +%s Block Range",
   "item.cheesy_revoted.music_disc_crab_rave": "§bMusic Disc",
   "item.cheesy_revoted.music_disc_crab_rave.desc": "8 Bit Universe - Crab Rave",

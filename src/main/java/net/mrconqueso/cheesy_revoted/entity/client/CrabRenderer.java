@@ -5,7 +5,7 @@ import net.minecraft.client.render.entity.EntityRendererFactory;
 import net.minecraft.client.util.math.MatrixStack;
 import net.minecraft.util.Identifier;
 import net.mrconqueso.cheesy_revoted.CheesyRevoted;
-import net.mrconqueso.cheesy_revoted.entity.custom.CrabEntity;
+import net.mrconqueso.cheesy_revoted.entity.CrabEntity;
 import software.bernie.geckolib.renderer.GeoEntityRenderer;
 
 public class CrabRenderer extends GeoEntityRenderer<CrabEntity> {

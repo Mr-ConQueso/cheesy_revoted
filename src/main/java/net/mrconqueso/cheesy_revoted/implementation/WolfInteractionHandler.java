@@ -11,8 +11,8 @@ import net.minecraft.util.Hand;
 import net.minecraft.util.hit.EntityHitResult;
 import net.minecraft.world.World;
 import net.mrconqueso.cheesy_revoted.CheesyRevoted;
-import net.mrconqueso.cheesy_revoted.item.custom.WolfArmorItem;
-import net.mrconqueso.cheesy_revoted.sound.ModSounds;
+import net.mrconqueso.cheesy_revoted.item.WolfArmorItem;
+import net.mrconqueso.cheesy_revoted.registry.ModSounds;
 import org.jetbrains.annotations.Nullable;
 
 public class WolfInteractionHandler implements UseEntityCallback {
