@@ -2,14 +2,18 @@
   "entity.cheesy_revoted.crab": "Crab",
   "item.cheesy_revoted.crab_spawn_egg": "Crab Spawn Egg",
   "item.cheesy_revoted.crab_claw": "Crab Claw",
-  "item.cheesy_revoted.crab_claw.tooltip": "When used:",
-  "item.cheesy_revoted.crab_claw.tooltip_2": " +3 Block Range",
+  "item.cheesy_revoted.crab_claw.tooltip.when_held": "When held:",
+  "item.cheesy_revoted.crab_claw.tooltip.bonus": " +%s Block Range",
   "item.cheesy_revoted.music_disc_crab_rave": "§bMusic Disc",
   "item.cheesy_revoted.music_disc_crab_rave.desc": "8 Bit Universe - Crab Rave",
 
 
   "entity.cheesy_revoted.armadillo": "Armadillo",
   "item.cheesy_revoted.armadillo_spawn_egg": "Armadillo Spawn Egg",
+  "item.cheesy_revoted.wolf_armor": "Wolf Armor",
+  "item.cheesy_revoted.wolf_armor.tooltip.when_equipped": "When Equipped on a Wolf:",
+  "item.cheesy_revoted.wolf_armor.tooltip.bonus": "+%s Armor",
+  "subtitles.armor.wolf": "Wolf Armor Equips",
 
   "item.cheesy_revoted.armadillo_scute": "Armadillo Scute",
 

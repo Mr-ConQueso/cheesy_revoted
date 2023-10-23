@@ -32,6 +32,8 @@ public class ModItems {
     // --------- / TOOLS & UTILITIES / --------- //
     public static final Item CRAB_CLAW = registerItem("crab_claw",
             new CrabClawItem(CrabClawMaterial.CRAB_CLAW_MATERIAL, new FabricItemSettings().maxCount(1)));
+    public static final Item WOLF_AMOR = registerItem("wolf_armor",
+            new Item(new FabricItemSettings().maxCount(1)));
 
     // --------- / INGREDIENTS / --------- //
     public static final Item ARMADILLO_SCUTE = registerItem("armadillo_scute",
@@ -52,6 +54,8 @@ public class ModItems {
         addToItemGroup(ItemGroups.SPAWN_EGGS, ARMADILLO_SPAWN_EGG, Items.ALLAY_SPAWN_EGG);
         addToItemGroup(ItemGroups.SPAWN_EGGS, PENGUIN_SPAWN_EGG, Items.PARROT_SPAWN_EGG);
         addToItemGroup(ItemGroups.SPAWN_EGGS, MOOBLOOM_SPAWN_EGG, Items.MAGMA_CUBE_SPAWN_EGG);
+
+        addToItemGroup(ItemGroups.COMBAT, WOLF_AMOR, Items.TURTLE_HELMET);
 
         addToItemGroup(ItemGroups.TOOLS, CRAB_CLAW, Items.SHEARS);
         addToItemGroup(ItemGroups.TOOLS, MUSIC_DISC_CRAB_RAVE, Items.MUSIC_DISC_PIGSTEP);

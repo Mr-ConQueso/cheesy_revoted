@@ -36,11 +36,20 @@ public class PenguinModel extends GeoModel<PenguinEntity> {
     @Override
     public void setCustomAnimations(PenguinEntity animatable, long instanceId, AnimationState<PenguinEntity> animationState) {
         CoreGeoBone head = getAnimationProcessor().getBone("head");
+        CoreGeoBone penguin = getAnimationProcessor().getBone("penguin");
 
         if (head != null) {
             EntityModelData entityData = animationState.getData(DataTickets.ENTITY_MODEL_DATA);
             head.setRotX(entityData.headPitch() * MathHelper.RADIANS_PER_DEGREE);
             head.setPosY(entityData.netHeadYaw() * MathHelper.RADIANS_PER_DEGREE);
         }
+        /*
+        if (penguin != null) {
+            EntityModelData entityData = animationState.getData(DataTickets.ENTITY_MODEL_DATA);
+            head.setRotX(entityData * MathHelper.RADIANS_PER_DEGREE);
+            head.setPosY(entityData.netHeadYaw() * MathHelper.RADIANS_PER_DEGREE);
+        }
+
+         */
     }
 }

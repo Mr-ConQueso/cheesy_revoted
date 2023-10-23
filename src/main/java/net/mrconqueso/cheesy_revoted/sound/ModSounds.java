@@ -11,6 +11,9 @@ public class ModSounds {
     // --------- / MUSIC DISCS / --------- //
     public static final SoundEvent CRAB_RAVE = registerSoundEvent("crab_rave");
 
+    // --------- / USING SOUNDS / --------- //
+    public static final SoundEvent WOLF_ARMOR_EQUIP = registerSoundEvent("entity.wolf.armor");
+
     // --------- / REGISTER SOUNDS / --------- //
     private static SoundEvent registerSoundEvent(String name) {
         Identifier id = new Identifier(CheesyRevoted.MOD_ID, name);

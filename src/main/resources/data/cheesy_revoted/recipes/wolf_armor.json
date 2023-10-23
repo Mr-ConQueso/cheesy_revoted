@@ -1,0 +1,17 @@
+{
+  "type": "crafting_shaped",
+  "pattern": [
+    "#X#"
+  ],
+  "key": {
+    "#": {
+      "item": "minecraft:iron_ingot"
+    },
+    "X": {
+      "item": "cheesy_revoted:armadillo_scute"
+    }
+  },
+  "result": {
+    "item": "cheesy_revoted:wolf_armor"
+  }
+}

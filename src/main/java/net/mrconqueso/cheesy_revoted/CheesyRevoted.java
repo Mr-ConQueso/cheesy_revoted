@@ -1,13 +1,17 @@
 package net.mrconqueso.cheesy_revoted;
 
 import net.fabricmc.api.ModInitializer;
+import net.fabricmc.fabric.api.event.player.UseEntityCallback;
 import net.fabricmc.fabric.api.object.builder.v1.entity.FabricDefaultAttributeRegistry;
+import net.minecraft.entity.passive.WolfEntity;
 import net.mrconqueso.cheesy_revoted.blocks.ModBlocks;
 import net.mrconqueso.cheesy_revoted.entity.ModEntities;
 import net.mrconqueso.cheesy_revoted.entity.custom.ArmadilloEntity;
 import net.mrconqueso.cheesy_revoted.entity.custom.CrabEntity;
 import net.mrconqueso.cheesy_revoted.entity.custom.MoobloomEntity;
 import net.mrconqueso.cheesy_revoted.entity.custom.PenguinEntity;
+import net.mrconqueso.cheesy_revoted.implementation.WolfDataAccessor;
+import net.mrconqueso.cheesy_revoted.implementation.WolfInteractionHandler;
 import net.mrconqueso.cheesy_revoted.item.ModItems;
 import net.mrconqueso.cheesy_revoted.sound.ModSounds;
 import net.mrconqueso.cheesy_revoted.world.gen.ModEntityGeneration;
@@ -31,6 +35,10 @@ public class CheesyRevoted implements ModInitializer {
 		ModSounds.registerSounds();
 		ModEntityGeneration.addSpawns();
 
+		// --------- / WOLF ARMOR / --------- //
+
+		UseEntityCallback.EVENT.register(new WolfInteractionHandler());
+
 		// --------- / REGISTER ENTITIES / --------- //
 
 		FabricDefaultAttributeRegistry.register(ModEntities.CRAB, CrabEntity.setAttributes());
@@ -38,5 +46,9 @@ public class CheesyRevoted implements ModInitializer {
 		FabricDefaultAttributeRegistry.register(ModEntities.PENGUIN, PenguinEntity.setAttributes());
 		FabricDefaultAttributeRegistry.register(ModEntities.MOOBLOOM, MoobloomEntity.setAttributes());
 
+	}
+
+	public static WolfDataAccessor getData(WolfEntity wolf) {
+		return ((WolfDataAccessor) wolf);
 	}
 }
