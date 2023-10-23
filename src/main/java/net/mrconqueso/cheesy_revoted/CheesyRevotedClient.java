@@ -16,7 +16,6 @@ import net.mrconqueso.cheesy_revoted.entity.client.MoobloomRenderer;
 import net.mrconqueso.cheesy_revoted.entity.client.PenguinRenderer;
 
 public class CheesyRevotedClient implements ClientModInitializer {
-
     public static final EntityModelLayer WOLF_ARMOR = new EntityModelLayer(new Identifier(CheesyRevoted.MOD_ID,"wolf_armor"), "wolf_armor");
 
     @Override

@@ -12,14 +12,12 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 @Mixin(Enchantment.class)
 public class EnchantmentMixin {
 
-    @Inject(
-            method = "isAcceptableItem",
-            at = @At("HEAD"),
-            cancellable = true
-    )
-    private void wolfArmorProtection(ItemStack stack, CallbackInfoReturnable<Boolean> cir) {
+    // --------- / ENCHANTABLE ITEMS / --------- //
+    @Inject(method = "isAcceptableItem", at = @At("HEAD"), cancellable = true)
+    private void wolfArmorProtection(ItemStack stack, CallbackInfoReturnable<Boolean> info) {
+
         if((Object) this instanceof ProtectionEnchantment && stack.getItem() instanceof WolfArmorItem) {
-            cir.setReturnValue(true);
+            info.setReturnValue(true);
         }
     }
 }

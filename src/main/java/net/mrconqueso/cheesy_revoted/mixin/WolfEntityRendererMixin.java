@@ -13,11 +13,11 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 
 @Mixin(WolfEntityRenderer.class)
 public abstract class WolfEntityRendererMixin extends MobEntityRenderer<WolfEntity, WolfEntityModel<WolfEntity>> {
-
     public WolfEntityRendererMixin(EntityRendererFactory.Context context, WolfEntityModel<WolfEntity> entityModel, float f) {
         super(context, entityModel, f);
     }
 
+    // Render Wolf Armor
     @Inject(method = "<init>", at = @At("RETURN"))
     private void addWolfArmorFeature(EntityRendererFactory.Context context, CallbackInfo ci) {
         this.addFeature(new WolfArmorFeatureRenderer(this, context.getModelLoader()));

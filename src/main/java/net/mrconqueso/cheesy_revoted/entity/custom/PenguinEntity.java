@@ -327,4 +327,14 @@ public class PenguinEntity extends AnimalEntity implements GeoEntity {
     protected Vector3f getPassengerAttachmentPos(Entity passenger, EntityDimensions dimensions, float scaleFactor) {
         return new Vector3f(0.0f, dimensions.height + (this.isBaby() ? 0.0f : 0.15625f) * scaleFactor, -0.25f * scaleFactor);
     }
+    /*
+    @Override
+    public int getMaxLookPitchChange() {
+        if (this.isInSittingPose()) {
+            return 20;
+        }
+        return super.getMaxLookPitchChange();
+    }
+
+     */
 }

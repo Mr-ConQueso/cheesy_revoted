@@ -15,16 +15,17 @@ import org.spongepowered.asm.mixin.injection.ModifyVariable;
 
 @Mixin(ItemRenderer.class)
 public abstract class ItemRendererMixin {
+
+    // --------- / 3D RENDER ON HAND / --------- //
     @ModifyVariable(method = "renderItem", at = @At(value = "HEAD"), argsOnly = true)
     public BakedModel useCrabClawModel(BakedModel value, ItemStack itemStack, ModelTransformationMode renderMode, boolean leftHanded, MatrixStack matrices, VertexConsumerProvider vertexConsumers, int light, int overlay) {
 
         boolean isInInventory;
-
         if (renderMode == ModelTransformationMode.GUI || renderMode == ModelTransformationMode.FIXED || renderMode == ModelTransformationMode.GROUND) {
             isInInventory = true;
-
         } else { isInInventory = false; }
 
+        // Crab Claw 3D Model
         if (itemStack.isOf(ModItems.CRAB_CLAW) && !isInInventory) {
             return ((ItemRendererAccessor) this).mccourse$getModels().getModelManager().getModel(new ModelIdentifier(CheesyRevoted.MOD_ID, "crab_claw_model", "inventory"));
         }

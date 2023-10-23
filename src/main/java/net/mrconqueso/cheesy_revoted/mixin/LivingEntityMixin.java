@@ -15,11 +15,11 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 
 @Mixin(LivingEntity.class)
 public abstract class LivingEntityMixin extends Entity {
-
     public LivingEntityMixin(EntityType<?> type, World world) {
         super(type, world);
     }
 
+    // Adds the getArmor() method to Wolf Entities
     @Inject(method = "getArmor", at = @At("HEAD"), cancellable = true)
     private void getArmor(CallbackInfoReturnable<Integer> cir) {
         if((Object) this instanceof WolfEntity wolf) {

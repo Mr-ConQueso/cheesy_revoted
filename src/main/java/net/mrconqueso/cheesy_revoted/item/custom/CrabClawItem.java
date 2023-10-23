@@ -2,14 +2,17 @@ package net.mrconqueso.cheesy_revoted.item.custom;
 
 
 import com.google.common.collect.Multimap;
+import com.jamieswhiteshirt.reachentityattributes.ReachEntityAttributes;
 import net.minecraft.client.item.TooltipContext;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EquipmentSlot;
 import net.minecraft.entity.attribute.EntityAttribute;
 import net.minecraft.entity.attribute.EntityAttributeModifier;
+import net.minecraft.entity.attribute.EntityAttributes;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.ToolItem;
 import net.minecraft.item.ToolMaterial;
+import net.minecraft.nbt.NbtCompound;
 import net.minecraft.text.Text;
 import net.minecraft.util.Formatting;
 import net.minecraft.world.World;
@@ -28,9 +31,9 @@ public class CrabClawItem extends ToolItem {
     @Override
     public void inventoryTick(ItemStack stack, World world, Entity entity, int slot, boolean selected) {
 
-        if (slot == 99 || slot == 98) {
+        //this.getAttributeModifiers(stack, EquipmentSlot.OFFHAND).put(ReachEntityAttributes.REACH, 3.0f);
+        //this.getAttributeModifiers(stack, EquipmentSlot.OFFHAND).put(EntityAttributes.GENERIC_MAX_HEALTH, EntityAttributeModifier.Operation.ADDITION.);
 
-        }
 
         super.inventoryTick(stack, world, entity, slot, selected);
     }

@@ -6,7 +6,6 @@ import net.minecraft.client.render.entity.model.WolfEntityModel;
 import net.minecraft.entity.passive.WolfEntity;
 
 public class WolfArmorModel extends WolfEntityModel<WolfEntity> {
-
     public WolfArmorModel(ModelPart root) {
         super(root);
     }

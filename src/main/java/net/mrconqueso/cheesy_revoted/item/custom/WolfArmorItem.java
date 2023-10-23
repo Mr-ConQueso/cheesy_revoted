@@ -12,6 +12,7 @@ import net.minecraft.util.Formatting;
 import net.minecraft.util.Identifier;
 import net.minecraft.world.World;
 import net.mrconqueso.cheesy_revoted.CheesyRevoted;
+import org.jetbrains.annotations.Nullable;
 
 import java.util.List;
 
@@ -26,7 +27,6 @@ public class WolfArmorItem extends Item {
     }
 
     // --------- / WOLF ENTITY ARMOR TEXTURE / --------- //
-    @Environment(EnvType.CLIENT)
     public Identifier getEntityTexture() {
         return this.entityTexture;
     }
@@ -39,10 +39,7 @@ public class WolfArmorItem extends Item {
 
     // --------- / ADDED ARMOR TOOLTIP / --------- //
     @Override
-    @Environment(EnvType.CLIENT)
-    public void appendTooltip(ItemStack stack, World world, List<Text> tooltip, TooltipContext context) {
-        super.appendTooltip(stack, world, tooltip, context);
-
+    public void appendTooltip(ItemStack stack, @Nullable World world, List<Text> tooltip, TooltipContext context) {
         tooltip.add(Text.of(""));
         tooltip.add(Text.translatable("item.cheesy_revoted.wolf_armor.tooltip.when_equipped").formatted(Formatting.GRAY));
         tooltip.add(Text.translatable("item.cheesy_revoted.wolf_armor.tooltip.bonus", getBonus(stack)).formatted(Formatting.BLUE));

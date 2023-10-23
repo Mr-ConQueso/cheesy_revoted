@@ -12,6 +12,7 @@ import net.mrconqueso.cheesy_revoted.CheesyRevoted;
 import net.mrconqueso.cheesy_revoted.blocks.ModBlocks;
 import net.mrconqueso.cheesy_revoted.entity.ModEntities;
 import net.mrconqueso.cheesy_revoted.item.custom.CrabClawItem;
+import net.mrconqueso.cheesy_revoted.item.custom.WolfArmorItem;
 import net.mrconqueso.cheesy_revoted.item.custom_materials.CrabClawMaterial;
 import net.mrconqueso.cheesy_revoted.sound.ModSounds;
 
@@ -33,7 +34,7 @@ public class ModItems {
     public static final Item CRAB_CLAW = registerItem("crab_claw",
             new CrabClawItem(CrabClawMaterial.CRAB_CLAW_MATERIAL, new FabricItemSettings().maxCount(1)));
     public static final Item WOLF_AMOR = registerItem("wolf_armor",
-            new Item(new FabricItemSettings().maxCount(1)));
+            new WolfArmorItem(new FabricItemSettings().maxCount(1)));
 
     // --------- / INGREDIENTS / --------- //
     public static final Item ARMADILLO_SCUTE = registerItem("armadillo_scute",

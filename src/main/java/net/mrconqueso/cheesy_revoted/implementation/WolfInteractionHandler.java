@@ -16,6 +16,8 @@ import net.mrconqueso.cheesy_revoted.sound.ModSounds;
 import org.jetbrains.annotations.Nullable;
 
 public class WolfInteractionHandler implements UseEntityCallback {
+
+    // --------- / APPLY & REMOVE WOLF ARMOR / --------- //
     @Override
     public ActionResult interact(PlayerEntity player, World world, Hand hand, Entity entity, @Nullable EntityHitResult hitResult) {
         if(entity instanceof WolfEntity wolf) {

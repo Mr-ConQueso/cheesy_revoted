@@ -21,14 +21,15 @@ import net.mrconqueso.cheesy_revoted.item.custom.WolfArmorItem;
 
 @Environment(EnvType.CLIENT)
 public class WolfArmorFeatureRenderer extends FeatureRenderer<WolfEntity, WolfEntityModel<WolfEntity>> {
-
-    private final WolfArmorModel model;
-
     public WolfArmorFeatureRenderer(FeatureRendererContext<WolfEntity, WolfEntityModel<WolfEntity>> featureRendererContext, EntityModelLoader loader) {
         super(featureRendererContext);
         model = new WolfArmorModel(loader.getModelPart(CheesyRevotedClient.WOLF_ARMOR));
     }
 
+    // --------- / VARIABLES / --------- //
+    private final WolfArmorModel model;
+
+    // --------- / RENDER WOLF ARMOR / --------- //
     @Override
     public void render(MatrixStack matrixStack, VertexConsumerProvider vertexConsumerProvider, int i, WolfEntity wolf, float f, float g, float h, float j, float k, float l) {
         ItemStack itemStack = CheesyRevoted.getData(wolf).getWolfArmor();
