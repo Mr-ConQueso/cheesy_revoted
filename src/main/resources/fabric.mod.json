@@ -24,6 +24,9 @@
 		],
 		"fabric-datagen": [
           "net.mrconqueso.cheesy_revoted.CheesyRevotedDataGenerator"
+		],
+		"modmenu": [
+			"net.mrconqueso.cheesy_revoted.config.ModMenuIntegration"
 		]
 	},
 	"mixins": [

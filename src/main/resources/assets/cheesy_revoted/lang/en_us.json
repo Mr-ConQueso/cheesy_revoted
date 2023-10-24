@@ -22,5 +22,67 @@
   "item.cheesy_revoted.penguin_spawn_egg": "Penguin Spawn Egg",
 
   "entity.cheesy_revoted.moobloom": "Moobloom",
-  "item.cheesy_revoted.moobloom_spawn_egg": "Moobloom Spawn Egg"
+  "item.cheesy_revoted.moobloom_spawn_egg": "Moobloom Spawn Egg",
+
+
+  "text.autoconfig.cheesy_revoted.title": "Cheesy's Revoted Ideas",
+  "text.autoconfig.cheesy_revoted.category.mobvote": "Mob Votes",
+  "text.autoconfig.cheesy_revoted.category.biomevote.2018": "Biome Chooser 2018",
+  "text.autoconfig.cheesy_revoted.category.biomevote.2019": "Biome Chooser 2019",
+
+  "text.autoconfig.cheesy_revoted.option.mobVote2023": "Mob Vote 2023",
+  "text.autoconfig.cheesy_revoted.option.mobVote2023.enablePenguin": "Enable Penguin",
+  "text.autoconfig.cheesy_revoted.option.mobVote2023.enableCrab": "Enable Crab",
+  "text.autoconfig.cheesy_revoted.option.mobVote2023.enableArmadillo": "Enable Armadillo",
+
+  "text.autoconfig.cheesy_revoted.option.mobVote2022": "Mob Vote 2022",
+  "text.autoconfig.cheesy_revoted.option.mobVote2022.enableTuffGolem": "Enable Tuff Golem",
+  "text.autoconfig.cheesy_revoted.option.mobVote2022.enableRascal": "Enable Rascal",
+  "text.autoconfig.cheesy_revoted.option.mobVote2022.enableSniffer": "Enable Sniffer",
+
+  "text.autoconfig.cheesy_revoted.option.mobVote2021": "Mob Vote 2021",
+  "text.autoconfig.cheesy_revoted.option.mobVote2021.enableCopperGolem": "Enable Copper Golem",
+  "text.autoconfig.cheesy_revoted.option.mobVote2021.enableGlare": "Enable Glare",
+  "text.autoconfig.cheesy_revoted.option.mobVote2021.enableAllay": "Enable Allay",
+
+  "text.autoconfig.cheesy_revoted.option.mobVote2020": "Mob Vote 2020",
+  "text.autoconfig.cheesy_revoted.option.mobVote2020.enableMoobloom": "Enable Moobloom",
+  "text.autoconfig.cheesy_revoted.option.mobVote2020.enableIceologer": "Enable Iceologer",
+  "text.autoconfig.cheesy_revoted.option.mobVote2020.enableGlowsquid": "Enable Glowsquid",
+
+  "text.autoconfig.cheesy_revoted.option.mobVote2017": "Mob Vote 2017",
+  "text.autoconfig.cheesy_revoted.option.mobVote2017.enableBarnacle": "Enable Barnacle",
+  "text.autoconfig.cheesy_revoted.option.mobVote2017.enableHungering": "Enable Hungering",
+  "text.autoconfig.cheesy_revoted.option.mobVote2017.enableWildfire": "Enable Wildfire",
+  "text.autoconfig.cheesy_revoted.option.mobVote2017.enablePhantom": "Enable Phantom",
+
+
+  "text.autoconfig.cheesy_revoted.option.biomeVoteDesert": "Desert Update",
+  "text.autoconfig.cheesy_revoted.option.biomeVoteDesert.enableSuricato": "Enable Suricato",
+  "text.autoconfig.cheesy_revoted.option.biomeVoteDesert.enablePalmTrees": "Enable Palm Trees",
+  "text.autoconfig.cheesy_revoted.option.biomeVoteDesert.enableOasis": "Enable Oasis",
+
+  "text.autoconfig.cheesy_revoted.option.biomeVoteSavanna": "Savanna Update",
+  "text.autoconfig.cheesy_revoted.option.biomeVoteSavanna.enableBaobabs": "Enable Baobabs",
+  "text.autoconfig.cheesy_revoted.option.biomeVoteSavanna.enableTermites": "Enable Termites",
+  "text.autoconfig.cheesy_revoted.option.biomeVoteSavanna.enableOstrich": "Enable Ostrich",
+
+  "text.autoconfig.cheesy_revoted.option.biomeVoteTaiga": "Taiga Update",
+  "text.autoconfig.cheesy_revoted.option.biomeVoteTaiga.enableSweetBerries": "Enable Sweet Berries",
+  "text.autoconfig.cheesy_revoted.option.biomeVoteTaiga.enableCampfires": "Enable Campfires",
+  "text.autoconfig.cheesy_revoted.option.biomeVoteTaiga.enableFoxes": "Enable Foxes",
+
+
+  "text.autoconfig.cheesy_revoted.option.biomeVoteBadlands": "Badlands Update",
+  "text.autoconfig.cheesy_revoted.option.biomeVoteBadlands.enableCactus": "Enable Cactus",
+  "text.autoconfig.cheesy_revoted.option.biomeVoteBadlands.enableVultures": "Enable Vultures",
+  "text.autoconfig.cheesy_revoted.option.biomeVoteBadlands.enableTumbleweed": "Enable Tumbleweed",
+
+  "text.autoconfig.cheesy_revoted.option.biomeVoteSwamp": "Swamp Update",
+  "text.autoconfig.cheesy_revoted.option.biomeVoteSwamp.enableFrogs": "Enable frogs",
+  "text.autoconfig.cheesy_revoted.option.biomeVoteSwamp.enableBoatsWithChest": "Enable Boat with Chest",
+
+  "text.autoconfig.cheesy_revoted.option.biomeVoteMountains": "Badlands Mountains",
+  "text.autoconfig.cheesy_revoted.option.biomeVoteMountains.enableGoats": "Enable Goats",
+  "text.autoconfig.cheesy_revoted.option.biomeVoteMountains.enablePowderSnow": "Enable Powder Snow"
 }

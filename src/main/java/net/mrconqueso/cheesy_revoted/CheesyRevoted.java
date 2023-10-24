@@ -1,9 +1,13 @@
 package net.mrconqueso.cheesy_revoted;
 
+import me.shedaniel.autoconfig.AutoConfig;
+import me.shedaniel.autoconfig.serializer.GsonConfigSerializer;
+import me.shedaniel.autoconfig.serializer.Toml4jConfigSerializer;
 import net.fabricmc.api.ModInitializer;
 import net.fabricmc.fabric.api.event.player.UseEntityCallback;
 import net.fabricmc.fabric.api.object.builder.v1.entity.FabricDefaultAttributeRegistry;
 import net.minecraft.entity.passive.WolfEntity;
+import net.mrconqueso.cheesy_revoted.config.ModConfig;
 import net.mrconqueso.cheesy_revoted.registry.ModBlocks;
 import net.mrconqueso.cheesy_revoted.registry.ModEntities;
 import net.mrconqueso.cheesy_revoted.entity.ArmadilloEntity;
@@ -27,6 +31,11 @@ public class CheesyRevoted implements ModInitializer {
 	public void onInitialize() {
 
 		LOGGER.info("Cheesy's Revoted Ideas is Initializing!");
+
+		// --------- / INITIALIZE CONFIG / --------- //
+
+		//AutoConfig.register(ModConfig.class, Toml4jConfigSerializer::new);
+		AutoConfig.register(ModConfig.class, GsonConfigSerializer::new);
 
 		// --------- / INITIALIZE FEATURE CLASSES / --------- //
 

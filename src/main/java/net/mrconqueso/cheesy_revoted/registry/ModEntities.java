@@ -1,5 +1,6 @@
 package net.mrconqueso.cheesy_revoted.registry;
 
+import me.shedaniel.autoconfig.AutoConfig;
 import net.fabricmc.fabric.api.object.builder.v1.entity.FabricEntityTypeBuilder;
 import net.minecraft.entity.EntityDimensions;
 import net.minecraft.entity.EntityType;
@@ -8,12 +9,16 @@ import net.minecraft.registry.Registries;
 import net.minecraft.registry.Registry;
 import net.minecraft.util.Identifier;
 import net.mrconqueso.cheesy_revoted.CheesyRevoted;
+import net.mrconqueso.cheesy_revoted.config.ModConfig;
+import net.mrconqueso.cheesy_revoted.config.ModMenuIntegration;
 import net.mrconqueso.cheesy_revoted.entity.ArmadilloEntity;
 import net.mrconqueso.cheesy_revoted.entity.CrabEntity;
 import net.mrconqueso.cheesy_revoted.entity.MoobloomEntity;
 import net.mrconqueso.cheesy_revoted.entity.PenguinEntity;
 
 public class ModEntities {
+
+    ModConfig modConfig = AutoConfig.getConfigHolder(ModConfig.class).getConfig();
 
     public static final EntityType<CrabEntity> CRAB = Registry.register(
             Registries.ENTITY_TYPE, new Identifier(CheesyRevoted.MOD_ID, "crab"),
