@@ -5,7 +5,8 @@ import java.util.Comparator;
 
 public enum GlareVariant {
     DEFAULT(0),
-    FLOWERING(1);
+    Is_INVISIBLE(1),
+    FLOWERING(2);
 
     private static final GlareVariant[] BY_ID = Arrays.stream(values()).sorted(Comparator.
             comparingInt(GlareVariant::getId)).toArray(GlareVariant[]::new);

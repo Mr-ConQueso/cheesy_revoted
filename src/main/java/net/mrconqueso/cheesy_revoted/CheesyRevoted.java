@@ -8,16 +8,10 @@ import net.fabricmc.fabric.api.event.player.UseEntityCallback;
 import net.fabricmc.fabric.api.object.builder.v1.entity.FabricDefaultAttributeRegistry;
 import net.minecraft.entity.passive.WolfEntity;
 import net.mrconqueso.cheesy_revoted.config.ModConfig;
-import net.mrconqueso.cheesy_revoted.registry.ModBlocks;
-import net.mrconqueso.cheesy_revoted.registry.ModEntities;
-import net.mrconqueso.cheesy_revoted.entity.ArmadilloEntity;
-import net.mrconqueso.cheesy_revoted.entity.CrabEntity;
-import net.mrconqueso.cheesy_revoted.entity.MoobloomEntity;
-import net.mrconqueso.cheesy_revoted.entity.PenguinEntity;
+import net.mrconqueso.cheesy_revoted.entity.*;
+import net.mrconqueso.cheesy_revoted.registry.*;
 import net.mrconqueso.cheesy_revoted.implementation.WolfDataAccessor;
 import net.mrconqueso.cheesy_revoted.implementation.WolfInteractionHandler;
-import net.mrconqueso.cheesy_revoted.registry.ModItems;
-import net.mrconqueso.cheesy_revoted.registry.ModSounds;
 import net.mrconqueso.cheesy_revoted.world.gen.ModEntityGeneration;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -26,6 +20,10 @@ public class CheesyRevoted implements ModInitializer {
 
 	public static final String MOD_ID = "cheesy_revoted";
 	public static final Logger LOGGER = LoggerFactory.getLogger(MOD_ID);
+
+	public static WolfDataAccessor getData(WolfEntity wolf) {
+		return ((WolfDataAccessor) wolf);
+	}
 
 	@Override
 	public void onInitialize() {
@@ -41,6 +39,7 @@ public class CheesyRevoted implements ModInitializer {
 
 		ModItems.registerModItems();
 		ModBlocks.registertModBlocks();
+		ModItemGroup.registerModItemGroup();
 		ModSounds.registerSounds();
 		ModEntityGeneration.addSpawns();
 
@@ -50,14 +49,41 @@ public class CheesyRevoted implements ModInitializer {
 
 		// --------- / REGISTER ENTITIES / --------- //
 
-		FabricDefaultAttributeRegistry.register(ModEntities.CRAB, CrabEntity.setAttributes());
-		FabricDefaultAttributeRegistry.register(ModEntities.ARMADILLO, ArmadilloEntity.setAttributes());
-		FabricDefaultAttributeRegistry.register(ModEntities.PENGUIN, PenguinEntity.setAttributes());
-		FabricDefaultAttributeRegistry.register(ModEntities.MOOBLOOM, MoobloomEntity.setAttributes());
+		registerEntities();
 
 	}
 
-	public static WolfDataAccessor getData(WolfEntity wolf) {
-		return ((WolfDataAccessor) wolf);
+	private void registerEntities() {
+
+		// --------- / MOB VOTE 2023 / --------- //
+
+		FabricDefaultAttributeRegistry.register(ModEntities.CRAB, CrabEntity.setAttributes());
+		FabricDefaultAttributeRegistry.register(ModEntities.ARMADILLO, ArmadilloEntity.setAttributes());
+		FabricDefaultAttributeRegistry.register(ModEntities.PENGUIN, PenguinEntity.setAttributes());
+
+		// --------- / MOB VOTE 2022 / --------- //
+
+
+
+		// --------- / MOB VOTE 2021 / --------- //
+
+		FabricDefaultAttributeRegistry.register(ModEntities.COPPER_GOLEM, CopperGolemEntity.setAttributes());
+
+		// --------- / MOB VOTE 2020 / --------- //
+
+		FabricDefaultAttributeRegistry.register(ModEntities.MOOBLOOM, MoobloomEntity.setAttributes());
+
+		// --------- / BIOME CHOOSER 2019 / --------- //
+
+
+
+		// --------- / BIOME CHOOSER 2018 / --------- //
+
+
+
+		// --------- / MOB VOTE 2017 / --------- //
+
+
+
 	}
 }

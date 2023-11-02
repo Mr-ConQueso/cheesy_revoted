@@ -18,6 +18,7 @@ import net.minecraft.state.StateManager;
 import net.minecraft.state.property.IntProperty;
 import net.minecraft.state.property.Properties;
 import net.minecraft.util.math.BlockPos;
+import net.minecraft.util.math.Vec3d;
 import net.minecraft.util.math.random.Random;
 import net.minecraft.util.shape.VoxelShape;
 import net.minecraft.world.BlockView;
@@ -37,7 +38,6 @@ public class PenguinEggBlock extends Block {
     }
 
     // --------- / VARIABLES / --------- //
-    private static final VoxelShape EGG_SHAPE = Block.createCuboidShape(4.0, 0.0, 4.0, 12.0, 9.0, 12.0);
     public static final IntProperty HATCH = Properties.HATCH;
     public static final IntProperty EGGS = IntProperty.of("eggs", 1, 2);
 
@@ -170,9 +170,16 @@ public class PenguinEggBlock extends Block {
         builder.add(HATCH, EGGS);
     }
 
+    private static final VoxelShape TWO_EGGS_SHAPE = Block.createCuboidShape(2.0, 0.0, 2.0, 14.0, 12.0, 14.0);
+    private static final VoxelShape ONE_EGG_SHAPE = Block.createCuboidShape(3.0, 0.0, 3.0, 13.0, 10.0, 12.0);
+
     @Deprecated
     @Override
     public VoxelShape getOutlineShape(BlockState state, BlockView world, BlockPos pos, ShapeContext context) {
-        return EGG_SHAPE;
+        Vec3d vec3d = state.getModelOffset(world, pos);
+        if (state.get(EGGS) == 2) {
+            return TWO_EGGS_SHAPE.offset(vec3d.x, vec3d.y, vec3d.z);
+        }
+        return ONE_EGG_SHAPE.offset(vec3d.x, vec3d.y, vec3d.z);
     }
 }

@@ -1,5 +1,8 @@
 package net.mrconqueso.cheesy_revoted.entity.variants;
 
+import net.minecraft.block.Block;
+import net.mrconqueso.cheesy_revoted.registry.ModBlocks;
+
 import java.util.Arrays;
 import java.util.Comparator;
 
@@ -35,5 +38,43 @@ public enum MoobloomVariant {
 
     public static MoobloomVariant byId(int id) {
         return BY_ID[id % BY_ID.length];
+    }
+    public static Block getFlowerDrop(int id) {
+        switch (id) {
+            case 0:
+                return ModBlocks.DAFFODIL;
+            case 1:
+                return ModBlocks.DAHLIA;
+            case 2:
+                return ModBlocks.DUSTY_MILLER;
+            case 3:
+                return ModBlocks.SWAMPOOL;
+            case 4:
+                return ModBlocks.BLACK_SPOT;
+            case 5:
+                return ModBlocks.AMBER_ANGEL;
+            case 6:
+                return ModBlocks.DAHLIA;
+            case 7:
+                return ModBlocks.AMARYLLIS;
+            case 8:
+                return ModBlocks.LIME_SPURGE;
+            case 9:
+                return ModBlocks.OSTRICH_FERN;
+            case 10:
+                return ModBlocks.BUTTERFLY_WEED;
+            case 11:
+                return ModBlocks.LUMISHROOM;
+            case 12:
+                return ModBlocks.BLUE_IRIS;
+            case 13:
+                return ModBlocks.HIBISCUS_ROSE;
+            case 14:
+                return ModBlocks.BUTTERFLY_WEED;
+            case 15:
+                return ModBlocks.DAHLIA;
+            default:
+                return ModBlocks.DAFFODIL;
+        }
     }
 }

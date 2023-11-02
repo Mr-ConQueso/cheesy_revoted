@@ -12,7 +12,7 @@
   "item.cheesy_revoted.armadillo_spawn_egg": "Generar armadillo",
   "item.cheesy_revoted.wolf_armor": "Armadura de lobo",
   "item.cheesy_revoted.wolf_armor.tooltip.when_equipped": "Equipada en un lobo:",
-  "item.cheesy_revoted.wolf_armor.tooltip.bonus": " +%s Armadura",
+  "item.cheesy_revoted.wolf_armor.tooltip.bonus": "Armadura +%s",
   "subtitles.armor.wolf": "Equipa armadura a un lobo",
 
   "item.cheesy_revoted.armadillo_scute": "Escama de armadillo",
@@ -21,8 +21,28 @@
   "block.cheesy_revoted.penguin_egg": "Huevo de pingüino",
   "item.cheesy_revoted.penguin_spawn_egg": "Generar pingüino",
 
+  "entity.cheesy_revoted.copper_golem": "Gólem de cobre",
+  "item.cheesy_revoted.copper_golem_spawn_egg": "Generar gólem de cobre",
+
   "entity.cheesy_revoted.moobloom": "Moobloom",
   "item.cheesy_revoted.moobloom_spawn_egg": "Generar moobloom",
+
+  "block.cheesy_revoted.ostrich_fern": "Ostrich Fern",
+  "block.cheesy_revoted.lime_spurge": "Lime Spurge",
+  "block.cheesy_revoted.amaryllis": "Amaryllis",
+  "block.cheesy_revoted.amber_angel": "Amber Angel",
+  "block.cheesy_revoted.dusty_miller": "Dusty Miller",
+  "block.cheesy_revoted.dahlia": "Dahlia",
+  "block.cheesy_revoted.hibiscus_rose": "Hibiscus Rose",
+  "block.cheesy_revoted.butterfly_weed": "Butterfly Weed",
+  "block.cheesy_revoted.black_spot": "Black Spot",
+  "block.cheesy_revoted.blue_iris": "Blue Iris",
+  "block.cheesy_revoted.soul_flowers": "Soul Flowers",
+  "block.cheesy_revoted.sporeloom": "Sporeloom",
+  "block.cheesy_revoted.swampool": "Swampool",
+  "block.cheesy_revoted.wild_smeller": "Wild Smeller",
+  "block.cheesy_revoted.lumishroom": "Lumishroom",
+  "block.cheesy_revoted.daffodil": "Daffodil",
 
 
   "text.autoconfig.cheesy_revoted.title": "Cheesy's Revoted Ideas",

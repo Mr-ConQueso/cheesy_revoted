@@ -1,6 +1,8 @@
 package net.mrconqueso.cheesy_revoted.entity;
 
+import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
+import net.minecraft.block.SuspiciousStewIngredient;
 import net.minecraft.entity.*;
 import net.minecraft.entity.ai.goal.*;
 import net.minecraft.entity.attribute.DefaultAttributeContainer;
@@ -9,17 +11,24 @@ import net.minecraft.entity.damage.DamageSource;
 import net.minecraft.entity.data.DataTracker;
 import net.minecraft.entity.data.TrackedData;
 import net.minecraft.entity.data.TrackedDataHandlerRegistry;
-import net.minecraft.entity.passive.AnimalEntity;
-import net.minecraft.entity.passive.PassiveEntity;
+import net.minecraft.entity.passive.*;
 import net.minecraft.entity.player.PlayerEntity;
+import net.minecraft.inventory.RecipeInputInventory;
+import net.minecraft.item.DyeItem;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.Items;
 import net.minecraft.nbt.NbtCompound;
+import net.minecraft.particle.ParticleTypes;
+import net.minecraft.recipe.CraftingRecipe;
 import net.minecraft.recipe.Ingredient;
+import net.minecraft.recipe.RecipeType;
+import net.minecraft.registry.tag.ItemTags;
 import net.minecraft.server.world.ServerWorld;
+import net.minecraft.sound.SoundCategory;
 import net.minecraft.sound.SoundEvent;
 import net.minecraft.sound.SoundEvents;
 import net.minecraft.util.ActionResult;
+import net.minecraft.util.DyeColor;
 import net.minecraft.util.Hand;
 import net.minecraft.util.Util;
 import net.minecraft.util.math.BlockPos;
@@ -27,6 +36,7 @@ import net.minecraft.util.math.Vec3d;
 import net.minecraft.world.LocalDifficulty;
 import net.minecraft.world.ServerWorldAccess;
 import net.minecraft.world.World;
+import net.minecraft.world.event.GameEvent;
 import net.mrconqueso.cheesy_revoted.registry.ModEntities;
 import net.mrconqueso.cheesy_revoted.entity.variants.MoobloomVariant;
 import org.jetbrains.annotations.Nullable;
@@ -37,6 +47,9 @@ import software.bernie.geckolib.core.animatable.instance.AnimatableInstanceCache
 import software.bernie.geckolib.core.animatable.instance.SingletonAnimatableInstanceCache;
 import software.bernie.geckolib.core.animation.AnimatableManager;
 
+import java.util.List;
+import java.util.Optional;
+
 public class MoobloomEntity extends AnimalEntity implements GeoEntity {
     public MoobloomEntity(EntityType<? extends AnimalEntity> entityType, World world) {
         super(entityType, world);
@@ -44,7 +57,7 @@ public class MoobloomEntity extends AnimalEntity implements GeoEntity {
 
     // --------- / VARIABLES / --------- //
     private AnimatableInstanceCache cache = new SingletonAnimatableInstanceCache(this);
-    private static final Ingredient BREEDING_INGREDIENT = Ingredient.ofItems(Items.DANDELION);
+    private static final Ingredient BREEDING_INGREDIENT = Ingredient.ofItems(Items.WHEAT);
 
     // --------- / ATTRIBUTES & AI / --------- //
     public static DefaultAttributeContainer.Builder setAttributes() {
@@ -68,7 +81,52 @@ public class MoobloomEntity extends AnimalEntity implements GeoEntity {
     @Nullable
     @Override
     public PassiveEntity createChild(ServerWorld world, PassiveEntity entity) {
-        return ModEntities.MOOBLOOM.create(world);
+        MoobloomEntity moobloomEntity = ModEntities.MOOBLOOM.create(world);
+        if (moobloomEntity != null) {
+            moobloomEntity.setVariant(getChildColor(this, (MoobloomEntity) entity));
+        }
+        return moobloomEntity;
+    }
+
+    private MoobloomVariant getChildColor(AnimalEntity firstParent, AnimalEntity secondParent) {
+        MoobloomVariant variant1 = ((MoobloomEntity)firstParent).getVariant();
+        MoobloomVariant variant2 = ((MoobloomEntity)secondParent).getVariant();
+
+        if ((variant1 == MoobloomVariant.RED && variant2 == MoobloomVariant.DEFAULT) || (variant1 == MoobloomVariant.DEFAULT && variant2 == MoobloomVariant.RED)) {
+            return MoobloomVariant.ORANGE;
+
+        } else if ((variant1 == MoobloomVariant.RED && variant2 == MoobloomVariant.BLUE) || (variant1 == MoobloomVariant.BLUE && variant2 == MoobloomVariant.RED)) {
+            return MoobloomVariant.PURPLE;
+
+        } else if ((variant1 == MoobloomVariant.RED && variant2 == MoobloomVariant.WHITE) || (variant1 == MoobloomVariant.WHITE && variant2 == MoobloomVariant.RED)) {
+            return MoobloomVariant.PINK;
+
+        } else if ((variant1 == MoobloomVariant.DEFAULT && variant2 == MoobloomVariant.BLUE) || (variant1 == MoobloomVariant.BLUE && variant2 == MoobloomVariant.DEFAULT)) {
+            return MoobloomVariant.GREEN;
+
+        } else if ((variant1 == MoobloomVariant.DEFAULT && variant2 == MoobloomVariant.WHITE) || (variant1 == MoobloomVariant.WHITE && variant2 == MoobloomVariant.DEFAULT)) {
+            return MoobloomVariant.LIME;
+
+        } else if ((variant1 == MoobloomVariant.LIGHT_BLUE && variant2 == MoobloomVariant.GREEN) || (variant1 == MoobloomVariant.GREEN && variant2 == MoobloomVariant.LIGHT_BLUE)) {
+            return MoobloomVariant.CYAN;
+
+        } else if ((variant1 == MoobloomVariant.BLUE && variant2 == MoobloomVariant.WHITE) || (variant1 == MoobloomVariant.WHITE && variant2 == MoobloomVariant.BLUE)) {
+            return MoobloomVariant.LIGHT_BLUE;
+
+        } else if (variant1 == MoobloomVariant.PURPLE && variant2 == MoobloomVariant.WHITE || (variant1 == MoobloomVariant.WHITE && variant2 == MoobloomVariant.PURPLE)) {
+            return MoobloomVariant.MAGENTA;
+
+        } else if ((variant1 == MoobloomVariant.BLACK && variant2 == MoobloomVariant.WHITE) || (variant1 == MoobloomVariant.WHITE && variant2 == MoobloomVariant.BLACK)) {
+            return MoobloomVariant.GRAY;
+
+        } else if ((variant1 == MoobloomVariant.WHITE && variant2 == MoobloomVariant.GRAY) || (variant1 == MoobloomVariant.GRAY && variant2 == MoobloomVariant.WHITE)) {
+            return MoobloomVariant.LIGHT_GRAY;
+
+        } else if ((variant1 == MoobloomVariant.ORANGE && variant2 == MoobloomVariant.BLACK) || (variant1 == MoobloomVariant.BLACK && variant2 == MoobloomVariant.ORANGE)) {
+            return MoobloomVariant.BROWN;
+
+        }
+        return this.getVariant();
     }
 
     // --------- / ANIMATIONS / --------- //
@@ -85,10 +143,44 @@ public class MoobloomEntity extends AnimalEntity implements GeoEntity {
     @Override
     public ActionResult interactMob(PlayerEntity player, Hand hand) {
 
-        boolean bl = this.isBreedingItem(player.getStackInHand(hand));
-        ActionResult actionResult = super.interactMob(player, hand);
+        ItemStack itemStack = player.getStackInHand(hand);
 
-        return actionResult;
+        if (itemStack.isOf(Items.SHEARS)) {
+            this.sheared(SoundCategory.PLAYERS);
+            this.emitGameEvent(GameEvent.SHEAR, player);
+            if (!this.getWorld().isClient) {
+                itemStack.damage(1, player, playerx -> playerx.sendToolBreakStatus(hand));
+            }
+            return ActionResult.success(this.getWorld().isClient);
+        }
+
+        return super.interactMob(player, hand);
+    }
+
+    public void sheared(SoundCategory shearedSoundCategory) {
+        CowEntity cowEntity;
+        this.getWorld().playSoundFromEntity(null, this, SoundEvents.ENTITY_MOOSHROOM_SHEAR, shearedSoundCategory, 1.0f, 1.0f);
+
+        if (!this.getWorld().isClient() && (cowEntity = EntityType.COW.create(this.getWorld())) != null) {
+
+            ((ServerWorld)this.getWorld()).spawnParticles(ParticleTypes.EXPLOSION, this.getX(), this.getBodyY(0.5), this.getZ(), 1, 0.0, 0.0, 0.0, 0.0);
+            this.discard();
+            cowEntity.refreshPositionAndAngles(this.getX(), this.getY(), this.getZ(), this.getYaw(), this.getPitch());
+            cowEntity.setHealth(this.getHealth());
+            cowEntity.bodyYaw = this.bodyYaw;
+            if (this.hasCustomName()) {
+                cowEntity.setCustomName(this.getCustomName());
+                cowEntity.setCustomNameVisible(this.isCustomNameVisible());
+            }
+            if (this.isPersistent()) {
+                cowEntity.setPersistent();
+            }
+            cowEntity.setInvulnerable(this.isInvulnerable());
+            this.getWorld().spawnEntity(cowEntity);
+            for (int i = 0; i < 5; ++i) {
+                this.getWorld().spawnEntity(new ItemEntity(this.getWorld(), this.getX(), this.getBodyY(1.0), this.getZ(), new ItemStack(this.getVariantFlower())));
+            }
+        }
     }
     @Override
     public boolean isBreedingItem(ItemStack stack) { return BREEDING_INGREDIENT.test(stack); }
@@ -140,6 +232,10 @@ public class MoobloomEntity extends AnimalEntity implements GeoEntity {
 
     public MoobloomVariant getVariant() {
         return MoobloomVariant.byId(this.getTypeVariant() & 255);
+    }
+
+    public Block getVariantFlower() {
+        return MoobloomVariant.getFlowerDrop(this.getTypeVariant());
     }
 
     private int getTypeVariant() {

@@ -1,0 +1,172 @@
+{
+	"format_version": "1.12.0",
+	"minecraft:geometry": [
+		{
+			"description": {
+				"identifier": "geometry.copper_golem",
+				"texture_width": 64,
+				"texture_height": 64,
+				"visible_bounds_width": 3,
+				"visible_bounds_height": 3.5,
+				"visible_bounds_offset": [0, 1.25, 0]
+			},
+			"bones": [
+				{
+					"name": "copper_golem",
+					"pivot": [0, 0, 0]
+				},
+				{
+					"name": "head",
+					"parent": "copper_golem",
+					"pivot": [0, 9.775, 0],
+					"cubes": [
+						{
+							"origin": [-5.95, 9.775, -4.25],
+							"size": [11.9, 6.8, 8.5],
+							"uv": {
+								"north": {"uv": [10, 28], "uv_size": [14, 8]},
+								"east": {"uv": [0, 28], "uv_size": [10, 8]},
+								"south": {"uv": [34, 28], "uv_size": [14, 8]},
+								"west": {"uv": [24, 28], "uv_size": [10, 8]},
+								"up": {"uv": [10, 18], "uv_size": [14, 10]},
+								"down": {"uv": [24, 28], "uv_size": [14, -10]}
+							}
+						},
+						{
+							"origin": [-1.275, 16.575, -1.275],
+							"size": [2.55, 4.25, 2.55],
+							"uv": {
+								"north": {"uv": [49, 46], "uv_size": [3, 5]},
+								"east": {"uv": [46, 46], "uv_size": [3, 5]},
+								"south": {"uv": [55, 46], "uv_size": [3, 5]},
+								"west": {"uv": [52, 46], "uv_size": [3, 5]},
+								"up": {"uv": [49, 43], "uv_size": [3, 3]},
+								"down": {"uv": [52, 46], "uv_size": [3, -3]}
+							}
+						},
+						{
+							"origin": [-2.55, 20.825, -2.55],
+							"size": [5.1, 5.1, 5.1],
+							"uv": {
+								"north": {"uv": [23, 12], "uv_size": [6, 6]},
+								"east": {"uv": [17, 12], "uv_size": [6, 6]},
+								"south": {"uv": [35, 12], "uv_size": [6, 6]},
+								"west": {"uv": [29, 12], "uv_size": [6, 6]},
+								"up": {"uv": [23, 6], "uv_size": [6, 6]},
+								"down": {"uv": [29, 12], "uv_size": [6, -6]}
+							}
+						},
+						{
+							"origin": [-1.7, 8.925, -5.95],
+							"size": [3.4, 4.25, 2.55],
+							"uv": {
+								"north": {"uv": [23, 46], "uv_size": [4, 5]},
+								"east": {"uv": [20, 46], "uv_size": [3, 5]},
+								"south": {"uv": [30, 46], "uv_size": [4, 5]},
+								"west": {"uv": [27, 46], "uv_size": [3, 5]},
+								"up": {"uv": [23, 43], "uv_size": [4, 3]},
+								"down": {"uv": [27, 46], "uv_size": [4, -3]}
+							}
+						}
+					]
+				},
+				{
+					"name": "body",
+					"parent": "copper_golem",
+					"pivot": [0.425, 5.1, -2.975],
+					"cubes": [
+						{
+							"origin": [-4.675, 5.1, -2.975],
+							"size": [9.35, 5.1, 5.95],
+							"uv": {
+								"north": {"uv": [27, 58], "uv_size": [11, 6]},
+								"east": {"uv": [20, 58], "uv_size": [7, 6]},
+								"south": {"uv": [45, 58], "uv_size": [11, 6]},
+								"west": {"uv": [38, 58], "uv_size": [7, 6]},
+								"up": {"uv": [27, 51], "uv_size": [11, 7]},
+								"down": {"uv": [38, 58], "uv_size": [11, -7]}
+							}
+						}
+					]
+				},
+				{
+					"name": "left_arm",
+					"parent": "copper_golem",
+					"pivot": [4.25, 8.925, 0],
+					"cubes": [
+						{
+							"origin": [4.675, 0.425, -2.125],
+							"size": [4.25, 10.2, 4.25],
+							"uv": {
+								"north": {"uv": [5, 41], "uv_size": [5, 12]},
+								"east": {"uv": [0, 41], "uv_size": [5, 12]},
+								"south": {"uv": [15, 41], "uv_size": [5, 12]},
+								"west": {"uv": [10, 41], "uv_size": [5, 12]},
+								"up": {"uv": [5, 36], "uv_size": [5, 5]},
+								"down": {"uv": [10, 41], "uv_size": [5, -5]}
+							}
+						}
+					]
+				},
+				{
+					"name": "right_arm",
+					"parent": "copper_golem",
+					"pivot": [3.825, 2.125, 0],
+					"rotation": [0, 0, 180],
+					"cubes": [
+						{
+							"origin": [12.325, -6.375, -2.125],
+							"size": [4.25, 10.2, 4.25],
+							"uv": {
+								"north": {"uv": [5, 41], "uv_size": [5, 12]},
+								"east": {"uv": [0, 41], "uv_size": [5, 12]},
+								"south": {"uv": [15, 41], "uv_size": [5, 12]},
+								"west": {"uv": [10, 41], "uv_size": [5, 12]},
+								"up": {"uv": [5, 36], "uv_size": [5, 5]},
+								"down": {"uv": [10, 41], "uv_size": [5, -5]}
+							}
+						}
+					]
+				},
+				{
+					"name": "right_leg",
+					"parent": "copper_golem",
+					"pivot": [-2.55, 8.075, 0],
+					"cubes": [
+						{
+							"origin": [-4.675, 0, -2.125],
+							"size": [4.25, 5.1, 4.25],
+							"uv": {
+								"north": {"uv": [5, 58], "uv_size": [5, 6]},
+								"east": {"uv": [0, 58], "uv_size": [5, 6]},
+								"south": {"uv": [15, 58], "uv_size": [5, 6]},
+								"west": {"uv": [10, 58], "uv_size": [5, 6]},
+								"up": {"uv": [5, 53], "uv_size": [5, 5]},
+								"down": {"uv": [10, 58], "uv_size": [5, -5]}
+							}
+						}
+					]
+				},
+				{
+					"name": "left_leg",
+					"parent": "copper_golem",
+					"pivot": [2.55, 8.075, 0],
+					"cubes": [
+						{
+							"origin": [0.425, 0, -2.125],
+							"size": [4.25, 5.1, 4.25],
+							"uv": {
+								"north": {"uv": [5, 58], "uv_size": [5, 6]},
+								"east": {"uv": [0, 58], "uv_size": [5, 6]},
+								"south": {"uv": [15, 58], "uv_size": [5, 6]},
+								"west": {"uv": [10, 58], "uv_size": [5, 6]},
+								"up": {"uv": [5, 53], "uv_size": [5, 5]},
+								"down": {"uv": [10, 58], "uv_size": [5, -5]}
+							}
+						}
+					]
+				}
+			]
+		}
+	]
+}

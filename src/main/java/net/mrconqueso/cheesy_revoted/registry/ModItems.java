@@ -21,6 +21,10 @@ public class ModItems {
             new SpawnEggItem(ModEntities.ARMADILLO, 0x6a332b, 0xbb7444, new FabricItemSettings()));
     public static final Item PENGUIN_SPAWN_EGG = registerItem("penguin_spawn_egg",
             new SpawnEggItem(ModEntities.PENGUIN, 0x363b4f, 0xdbdac6, new FabricItemSettings()));
+
+    public static final Item COPPER_GOLEM_SPAWN_EGG = registerItem("copper_golem_spawn_egg",
+            new SpawnEggItem(ModEntities.COPPER_GOLEM, 0xe3826c, 0x7a2c25, new FabricItemSettings()));
+
     public static final Item MOOBLOOM_SPAWN_EGG = registerItem("moobloom_spawn_egg",
             new SpawnEggItem(ModEntities.MOOBLOOM, 0xefc214, 0xfafafa, new FabricItemSettings()));
 
@@ -38,29 +42,6 @@ public class ModItems {
     public static final Item MUSIC_DISC_CRAB_RAVE = registerItem("music_disc_crab_rave",
             new MusicDiscItem(6, ModSounds.CRAB_RAVE, new FabricItemSettings().maxCount(1), 132));
 
-    // --------- / CREATIVE ITEM GROUPS / --------- //
-    private static void addItemsToItemGroup() {
-
-        addToItemGroup(ItemGroups.INGREDIENTS, ARMADILLO_SCUTE, Items.SCUTE);
-
-        addToItemGroup(ItemGroups.NATURAL, Item.fromBlock(ModBlocks.PENGUIN_EGG), Items.SNIFFER_EGG);
-
-        addToItemGroup(ItemGroups.SPAWN_EGGS, CRAB_SPAWN_EGG, Items.COW_SPAWN_EGG);
-        addToItemGroup(ItemGroups.SPAWN_EGGS, ARMADILLO_SPAWN_EGG, Items.ALLAY_SPAWN_EGG);
-        addToItemGroup(ItemGroups.SPAWN_EGGS, PENGUIN_SPAWN_EGG, Items.PARROT_SPAWN_EGG);
-        addToItemGroup(ItemGroups.SPAWN_EGGS, MOOBLOOM_SPAWN_EGG, Items.MAGMA_CUBE_SPAWN_EGG);
-
-        addToItemGroup(ItemGroups.COMBAT, WOLF_AMOR, Items.TURTLE_HELMET);
-
-        addToItemGroup(ItemGroups.TOOLS, CRAB_CLAW, Items.SHEARS);
-        addToItemGroup(ItemGroups.TOOLS, MUSIC_DISC_CRAB_RAVE, Items.MUSIC_DISC_PIGSTEP);
-    }
-
-    private static void addToItemGroup(RegistryKey<ItemGroup> itemGroup, Item item, Item itemBefore) {
-        ItemGroupEvents.modifyEntriesEvent(itemGroup).register(entries -> {
-            entries.addAfter(itemBefore, item);
-        });
-    }
 
     // --------- / REGISTER ITEMS / --------- //
     private static Item registerItem(String name, Item item) {
@@ -69,7 +50,5 @@ public class ModItems {
 
     public static void registerModItems() {
         CheesyRevoted.LOGGER.info("Registering Mod Items For " + CheesyRevoted.MOD_ID);
-
-        addItemsToItemGroup();
     }
 }

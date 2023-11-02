@@ -22,7 +22,7 @@ public class MoobloomRenderer extends GeoEntityRenderer<MoobloomEntity> {
     public static final Map<MoobloomVariant, Identifier> LOCATION_BY_VARIANT =
             Util.make(Maps.newEnumMap(MoobloomVariant.class), (map) -> {
                 map.put(MoobloomVariant.DEFAULT,
-                        new Identifier(CheesyRevoted.MOD_ID, "textures/entity/moobloom/moobloom.png"));
+                        new Identifier(CheesyRevoted.MOD_ID, "textures/entity/moobloom/moobloom_yellow.png"));
                 map.put(MoobloomVariant.WHITE,
                         new Identifier(CheesyRevoted.MOD_ID, "textures/entity/moobloom/moobloom_white.png"));
                 map.put(MoobloomVariant.LIGHT_GRAY,
