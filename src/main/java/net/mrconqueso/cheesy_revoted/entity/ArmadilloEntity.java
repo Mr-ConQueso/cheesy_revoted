@@ -1,29 +1,30 @@
 package net.mrconqueso.cheesy_revoted.entity;
 
 import net.minecraft.block.BlockState;
-import net.minecraft.entity.Entity;
-import net.minecraft.entity.EntityDimensions;
-import net.minecraft.entity.EntityPose;
-import net.minecraft.entity.EntityType;
+import net.minecraft.entity.*;
 import net.minecraft.entity.ai.goal.*;
 import net.minecraft.entity.attribute.DefaultAttributeContainer;
 import net.minecraft.entity.attribute.EntityAttributes;
 import net.minecraft.entity.damage.DamageSource;
 import net.minecraft.entity.passive.AnimalEntity;
+import net.minecraft.entity.passive.CowEntity;
 import net.minecraft.entity.passive.PassiveEntity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.Items;
+import net.minecraft.nbt.NbtCompound;
+import net.minecraft.particle.ParticleTypes;
 import net.minecraft.recipe.Ingredient;
 import net.minecraft.server.world.ServerWorld;
+import net.minecraft.sound.SoundCategory;
 import net.minecraft.sound.SoundEvent;
 import net.minecraft.sound.SoundEvents;
 import net.minecraft.util.ActionResult;
 import net.minecraft.util.Hand;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.Vec3d;
-import net.minecraft.world.GameRules;
 import net.minecraft.world.World;
+import net.minecraft.world.event.GameEvent;
 import net.mrconqueso.cheesy_revoted.registry.ModEntities;
 import net.mrconqueso.cheesy_revoted.registry.ModItems;
 import org.jetbrains.annotations.Nullable;
@@ -43,12 +44,13 @@ public class ArmadilloEntity extends AnimalEntity implements GeoEntity {
 
     // --------- / VARIABLES / --------- //
     private AnimatableInstanceCache cache = new SingletonAnimatableInstanceCache(this);
-    private static final Ingredient BREEDING_INGREDIENT = Ingredient.ofItems(Items.GOLD_NUGGET);
+    private static final Ingredient BREEDING_INGREDIENT = Ingredient.ofItems(Items.SPIDER_EYE);
+    public int scuteShedTime = this.random.nextInt(6000) + 6000;
 
     // --------- / ATTRIBUTES & AI / --------- //
     public static DefaultAttributeContainer.Builder setAttributes() {
         return AnimalEntity.createMobAttributes()
-                .add(EntityAttributes.GENERIC_MAX_HEALTH, 20.0f)
+                .add(EntityAttributes.GENERIC_MAX_HEALTH, 12.0f)
                 .add(EntityAttributes.GENERIC_MOVEMENT_SPEED, 0.20f);
     }
     @Override
@@ -63,19 +65,25 @@ public class ArmadilloEntity extends AnimalEntity implements GeoEntity {
         this.goalSelector.add(7, new LookAroundGoal(this));
     }
 
+    // --------- / SHED SCUTES / --------- //
+    @Override
+    public void tickMovement() {
+        super.tickMovement();
+        if (!this.getWorld().isClient && this.isAlive() && !this.isBaby() && --this.scuteShedTime <= 0) {
+            this.playSound(SoundEvents.ENTITY_TURTLE_SHAMBLE, 1.0f, (this.random.nextFloat() - this.random.nextFloat()) * 0.2f + 1.0f);
+            this.dropItem(ModItems.ARMADILLO_SCUTE);
+            this.emitGameEvent(GameEvent.ENTITY_PLACE);
+            this.scuteShedTime = this.random.nextInt(6000) + 6000;
+        }
+    }
+
     // --------- / CHILD & GROW-UP / --------- //
     @Nullable
     @Override
     public PassiveEntity createChild(ServerWorld world, PassiveEntity entity) {
         return ModEntities.ARMADILLO.create(world);
     }
-    @Override
-    protected void onGrowUp() {
-        super.onGrowUp();
-        if (!this.isBaby() && this.getWorld().getGameRules().getBoolean(GameRules.DO_MOB_LOOT)) {
-            this.dropItem(ModItems.ARMADILLO_SCUTE, 1);
-        }
-    }
+
     // --------- / ANIMATIONS / --------- //
 
     public static final RawAnimation IDLE = RawAnimation.begin().thenLoop("misc.idle");
@@ -109,14 +117,33 @@ public class ArmadilloEntity extends AnimalEntity implements GeoEntity {
     }
 
     // --------- / INTERACTIONS / --------- //
+
     @Override
     public ActionResult interactMob(PlayerEntity player, Hand hand) {
+        ItemStack itemStack = player.getStackInHand(hand);
 
-        boolean bl = this.isBreedingItem(player.getStackInHand(hand));
-        ActionResult actionResult = super.interactMob(player, hand);
-
-        return actionResult;
+        if (itemStack.isOf(Items.BRUSH)) {
+            if (!this.getWorld().isClient && this.isShearable()) {
+                this.sheared(SoundCategory.PLAYERS);
+                this.emitGameEvent(GameEvent.SHEAR, player);
+                itemStack.damage(1, player, playerx -> playerx.sendToolBreakStatus(hand));
+                return ActionResult.SUCCESS;
+            }
+            return ActionResult.CONSUME;
+        }
+        return super.interactMob(player, hand);
     }
+
+    public void sheared(SoundCategory shearedSoundCategory) {
+        this.getWorld().playSoundFromEntity(null, this, SoundEvents.ENTITY_SHEEP_SHEAR, shearedSoundCategory, 1.0f, 1.0f);
+        ItemEntity itemEntity = this.dropItem(ModItems.ARMADILLO_SCUTE, 0);
+        itemEntity.setVelocity(itemEntity.getVelocity().add((this.random.nextFloat() - this.random.nextFloat()) * 0.1f, this.random.nextFloat() * 0.05f, (this.random.nextFloat() - this.random.nextFloat()) * 0.1f));
+    }
+
+    public boolean isShearable() {
+        return this.isAlive() && !this.isBaby();
+    }
+
     @Override
     public boolean isBreedingItem(ItemStack stack) { return BREEDING_INGREDIENT.test(stack); }
 
@@ -133,6 +160,20 @@ public class ArmadilloEntity extends AnimalEntity implements GeoEntity {
     @Override
     protected void playStepSound(BlockPos pos, BlockState state) { this.playSound(SoundEvents.ENTITY_PIG_STEP, 0.15f, 1.0f); }
 
+    // --------- / NBT-DATA / --------- //
+    @Override
+    public void readCustomDataFromNbt(NbtCompound nbt) {
+        super.readCustomDataFromNbt(nbt);
+        if (nbt.contains("EggLayTime")) {
+            this.scuteShedTime = nbt.getInt("EggLayTime");
+        }
+    }
+
+    @Override
+    public void writeCustomDataToNbt(NbtCompound nbt) {
+        super.writeCustomDataToNbt(nbt);
+        nbt.putInt("EggLayTime", this.scuteShedTime);
+    }
     // --------- / MODEL SETTINGS / --------- //
     @Override
     protected Vec3d getLeashOffset() { return new Vec3d(0.0, this.getStandingEyeHeight(), this.getWidth() * -0.94f); }

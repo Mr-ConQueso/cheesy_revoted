@@ -1,16 +1,16 @@
 {
-  "type": "crafting_shaped",
-  "pattern": [
-    "#X#"
-  ],
+  "type": "minecraft:crafting_shaped",
+  "category": "equipment",
   "key": {
-    "#": {
-      "item": "minecraft:iron_ingot"
-    },
     "X": {
       "item": "cheesy_revoted:armadillo_scute"
     }
   },
+  "pattern": [
+    "X  ",
+    "XXX",
+    "X X"
+  ],
   "result": {
     "item": "cheesy_revoted:wolf_armor"
   }

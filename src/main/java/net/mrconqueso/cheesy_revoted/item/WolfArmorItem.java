@@ -23,7 +23,7 @@ public class WolfArmorItem extends Item {
     public WolfArmorItem(Settings settings) {
         super(settings);
         this.bonus = 5;
-        this.entityTexture = new Identifier(CheesyRevoted.MOD_ID, "textures/entity/wolf/armor/wolf_armor.png");
+        this.entityTexture = new Identifier(CheesyRevoted.MOD_ID, "textures/entity/wolf/wolf_armor.png");
     }
 
     // --------- / WOLF ENTITY ARMOR TEXTURE / --------- //

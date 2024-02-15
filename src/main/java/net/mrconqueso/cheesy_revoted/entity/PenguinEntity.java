@@ -1,5 +1,6 @@
 package net.mrconqueso.cheesy_revoted.entity;
 
+import me.shedaniel.cloth.clothconfig.shadowed.org.yaml.snakeyaml.events.Event;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.Blocks;
 import net.minecraft.entity.*;
@@ -15,6 +16,7 @@ import net.minecraft.entity.data.TrackedData;
 import net.minecraft.entity.data.TrackedDataHandlerRegistry;
 import net.minecraft.entity.mob.MobEntity;
 import net.minecraft.entity.passive.AnimalEntity;
+import net.minecraft.entity.passive.ParrotEntity;
 import net.minecraft.entity.passive.PassiveEntity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.ItemStack;
@@ -58,6 +60,9 @@ public class PenguinEntity extends AnimalEntity implements GeoEntity {
     private static final TrackedData<Boolean> LAND_BOUND = DataTracker.registerData(PenguinEntity.class, TrackedDataHandlerRegistry.BOOLEAN);
     private static final TrackedData<Boolean> ACTIVELY_TRAVELING = DataTracker.registerData(PenguinEntity.class, TrackedDataHandlerRegistry.BOOLEAN);
     public static final Ingredient BREEDING_ITEM = Ingredient.ofItems(Items.SALMON);
+    private boolean songPlaying;
+    @Nullable
+    private BlockPos songSource;
 
     public void setTravelPos(BlockPos pos) {
         this.dataTracker.set(TRAVEL_POS, pos);
@@ -117,12 +122,33 @@ public class PenguinEntity extends AnimalEntity implements GeoEntity {
         return ModEntities.PENGUIN.create(world);
     }
 
+    // --------- / DANCE / --------- //
+    @Override
+    public void tickMovement() {
+        if (this.songSource == null || !this.songSource.isWithinDistance(this.getPos(), 3.46) || !this.getWorld().getBlockState(this.songSource).isOf(Blocks.JUKEBOX)) {
+            this.songPlaying = false;
+            this.songSource = null;
+        }
+        super.tickMovement();
+    }
+
+    @Override
+    public void setNearbySongPlaying(BlockPos songPosition, boolean playing) {
+        this.songSource = songPosition;
+        this.songPlaying = playing;
+    }
+
+    public boolean isSongPlaying() {
+        return this.songPlaying;
+    }
+
     // --------- / ANIMATIONS / --------- //
 
     public static final RawAnimation IDLE = RawAnimation.begin().thenLoop("misc.idle");
     public static final RawAnimation WATER_IDLE = RawAnimation.begin().thenLoop("misc.water_idle");
     public static final RawAnimation WALK = RawAnimation.begin().thenLoop("move.walk");
     public static final RawAnimation SWIM = RawAnimation.begin().thenLoop("move.swim");
+    public static final RawAnimation CP_DANCE = RawAnimation.begin().thenLoop("dance.club_penguin");
     @Override
     public void registerControllers(AnimatableManager.ControllerRegistrar controllers) {
         controllers.add(penguinAnimationController(this));
@@ -135,14 +161,16 @@ public class PenguinEntity extends AnimalEntity implements GeoEntity {
 
     public <T extends Entity & GeoAnimatable> AnimationController<T> penguinAnimationController(T entity) {
         return new AnimationController<T>(entity, "Swim/Walk/Idle", 1, state -> {
-            if (entity.isTouchingWater()) {
-                return state.setAndContinue(state.isMoving() ? SWIM : WATER_IDLE);
-            }
-            else if (state.isMoving()) {
-                return state.setAndContinue(WALK);
+            if (this.isSongPlaying()) {
+                return state.setAndContinue(CP_DANCE);
             }
             else {
-                return state.setAndContinue(IDLE);
+                if (entity.isTouchingWater()) {
+                    return state.setAndContinue(state.isMoving() ? SWIM : WATER_IDLE);
+                }
+                else {
+                    return state.setAndContinue(state.isMoving() ? WALK : IDLE);
+                }
             }
         });
     }

@@ -1,6 +1,8 @@
 package net.mrconqueso.cheesy_revoted.entity;
 
+import java.util.Random;
 import net.minecraft.block.BlockState;
+import net.minecraft.block.Blocks;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityDimensions;
 import net.minecraft.entity.EntityPose;
@@ -29,13 +31,18 @@ import org.jetbrains.annotations.Nullable;
 import org.joml.Vector3f;
 import software.bernie.geckolib.animatable.GeoEntity;
 import software.bernie.geckolib.constant.DefaultAnimations;
+import software.bernie.geckolib.core.animatable.GeoAnimatable;
 import software.bernie.geckolib.core.animatable.instance.AnimatableInstanceCache;
 import software.bernie.geckolib.core.animatable.instance.SingletonAnimatableInstanceCache;
 import software.bernie.geckolib.core.animation.AnimatableManager;
+import software.bernie.geckolib.core.animation.AnimationController;
+import software.bernie.geckolib.core.animation.RawAnimation;
 
 public class CrabEntity extends AnimalEntity implements GeoEntity {
+    private int danceType;
     public CrabEntity(EntityType<? extends AnimalEntity> entityType, World world) {
         super(entityType, world);
+        this.danceType = new Random().nextInt(3);
     }
 
     // --------- / VARIABLES / --------- //
@@ -69,17 +76,60 @@ public class CrabEntity extends AnimalEntity implements GeoEntity {
         return ModEntities.CRAB.create(world);
     }
 
-    // --------- / ANIMATIONS / --------- //
+    // --------- / DANCE / --------- //
 
     @Override
-    public void registerControllers(AnimatableManager.ControllerRegistrar controllers) {
-        controllers.add(DefaultAnimations.genericWalkIdleController(this));
-        controllers.add(DefaultAnimations.genericAttackAnimation(this, DefaultAnimations.ATTACK_STRIKE));
+    public void tickMovement() {
+        if (this.songSource == null || !this.songSource.isWithinDistance(this.getPos(), 10) || !this.getWorld().getBlockState(this.songSource).isOf(Blocks.JUKEBOX)) {
+            this.songPlaying = false;
+            this.songSource = null;
+        }
+        super.tickMovement();
     }
 
     @Override
+    public void setNearbySongPlaying(BlockPos songPosition, boolean playing) {
+        this.songSource = songPosition;
+        this.songPlaying = playing;
+    }
+
+    public boolean isSongPlaying() {
+        return this.songPlaying;
+    }
+    public int getDanceType() { return  this.danceType; }
+
+    // --------- / ANIMATIONS / --------- //
+
+    public static final RawAnimation IDLE = RawAnimation.begin().thenLoop("misc.idle");
+    public static final RawAnimation WALK = RawAnimation.begin().thenLoop("move.walk");
+    public static final RawAnimation[] DANCE = {
+            RawAnimation.begin().thenLoop("dance.clap"),
+            RawAnimation.begin().thenLoop("dance.touchfloor"),
+            RawAnimation.begin().thenLoop("dance.sidewave")
+    };
+    @Override
+    public void registerControllers(AnimatableManager.ControllerRegistrar controllers) {
+        controllers.add(crabAnimationController(this));
+    }
+    @Override
     public AnimatableInstanceCache getAnimatableInstanceCache() {
         return cache;
+    }
+
+    public <T extends Entity & GeoAnimatable> AnimationController<T> crabAnimationController(T entity) {
+        return new AnimationController<T>(entity, "Walk/Idle", 1, state -> {
+            if (this.isSongPlaying()) {
+                return state.setAndContinue(DANCE[getDanceType()]);
+            }
+            else {
+                return state.setAndContinue(state.isMoving() ? WALK : IDLE);
+            }
+        });
+    }
+
+    private boolean isMoving() {
+        if (this.getMovementSpeed() > 0) { return true; }
+        return false;
     }
 
     // --------- / INTERACTIONS / --------- //
