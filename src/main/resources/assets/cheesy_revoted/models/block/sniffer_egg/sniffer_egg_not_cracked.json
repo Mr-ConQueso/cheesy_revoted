@@ -1,0 +1,11 @@
+{
+  "parent": "cheesy_revoted:block/sniffer_egg/sniffer_egg",
+  "textures": {
+    "bottom": "cheesy_revoted:block/sniffer_egg_not_cracked_bottom",
+    "east": "cheesy_revoted:block/sniffer_egg_not_cracked_east",
+    "north": "cheesy_revoted:block/sniffer_egg_not_cracked_north",
+    "south": "cheesy_revoted:block/sniffer_egg_not_cracked_south",
+    "top": "cheesy_revoted:block/sniffer_egg_not_cracked_top",
+    "west": "cheesy_revoted:block/sniffer_egg_not_cracked_west"
+  }
+}

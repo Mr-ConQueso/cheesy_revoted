@@ -18,10 +18,10 @@ public class ModEntities {
             FabricEntityTypeBuilder.create(SpawnGroup.CREATURE, CrabEntity::new)
                     .dimensions(EntityDimensions.fixed(0.75f, 0.563f)).build());
 
-    public static final EntityType<ArmadilloEntity> ARMADILLO = Registry.register(
+    public static final EntityType<ArmadilloEntityRevoted> ARMADILLO = Registry.register(
             Registries.ENTITY_TYPE, new Identifier(CheesyRevoted.MOD_ID, "armadillo"),
-            FabricEntityTypeBuilder.create(SpawnGroup.CREATURE, ArmadilloEntity::new)
-                    .dimensions(EntityDimensions.fixed(1.125f, 1.0f)).build());
+            FabricEntityTypeBuilder.create(SpawnGroup.CREATURE, ArmadilloEntityRevoted::new)
+                    .dimensions(EntityDimensions.fixed(0.7f, 0.65f)).build());
 
     public static final EntityType<PenguinEntity> PENGUIN = Registry.register(
             Registries.ENTITY_TYPE, new Identifier(CheesyRevoted.MOD_ID, "penguin"),
@@ -29,6 +29,22 @@ public class ModEntities {
                     .dimensions(EntityDimensions.fixed(0.8125f, 1.25f)).build());
 
     // --------- / MOB VOTE 2022 / --------- //
+
+    public static final EntityType<SnifferEntityRevoted> SNIFFER = Registry.register(
+            Registries.ENTITY_TYPE, new Identifier(CheesyRevoted.MOD_ID, "sniffer"),
+            FabricEntityTypeBuilder.create(SpawnGroup.MISC, SnifferEntityRevoted::new)
+                    .dimensions(EntityDimensions.fixed(1.9f, 1.75f)).build());
+
+    public static final EntityType<TuffGolemEntity> TUFF_GOLEM = Registry.register(
+            Registries.ENTITY_TYPE, new Identifier(CheesyRevoted.MOD_ID, "tuff_golem"),
+            FabricEntityTypeBuilder.create(SpawnGroup.MISC, TuffGolemEntity::new)
+                    .dimensions(EntityDimensions.fixed(0.875f, 1.3125f)).build());
+
+    public static final EntityType<RascalEntity> RASCAL = Registry.register(
+            Registries.ENTITY_TYPE, new Identifier(CheesyRevoted.MOD_ID, "rascal"),
+            FabricEntityTypeBuilder.create(SpawnGroup.MISC, RascalEntity::new)
+                    .dimensions(EntityDimensions.fixed(0.875f, 1.3125f)).build());
+
     // --------- / MOB VOTE 2021 / --------- //
     public static final EntityType<CopperGolemEntity> COPPER_GOLEM = Registry.register(
             Registries.ENTITY_TYPE, new Identifier(CheesyRevoted.MOD_ID, "copper_golem"),

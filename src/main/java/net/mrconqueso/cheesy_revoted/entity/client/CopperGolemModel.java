@@ -15,16 +15,12 @@ public class CopperGolemModel extends GeoModel<CopperGolemEntity> {
     // --------- / RESOURCES / --------- //
     @Override
     public Identifier getModelResource(CopperGolemEntity animatable) {
-        if (animatable.isBaby()) { return new Identifier(CheesyRevoted.MOD_ID, "geo/copper_golem_baby.geo.json"); }
-
         return new Identifier(CheesyRevoted.MOD_ID, "geo/copper_golem.geo.json");
     }
 
     @Override
     public Identifier getTextureResource(CopperGolemEntity animatable) {
-        if (animatable.isBaby()) { return new Identifier(CheesyRevoted.MOD_ID, "textures/entity/copperGolem_baby.png"); }
-
-        return new Identifier(CheesyRevoted.MOD_ID, "textures/entity/copper_golem/copper_golem.png");
+        return CopperGolemRenderer.LOCATION_BY_VARIANT.get(animatable.getVariant());
     }
 
     @Override

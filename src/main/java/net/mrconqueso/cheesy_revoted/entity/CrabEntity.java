@@ -102,6 +102,7 @@ public class CrabEntity extends AnimalEntity implements GeoEntity {
 
     public static final RawAnimation IDLE = RawAnimation.begin().thenLoop("misc.idle");
     public static final RawAnimation WALK = RawAnimation.begin().thenLoop("move.walk");
+    public static final RawAnimation ATTACK = RawAnimation.begin().thenLoop("attack.pinch");
     public static final RawAnimation[] DANCE = {
             RawAnimation.begin().thenLoop("dance.clap"),
             RawAnimation.begin().thenLoop("dance.touchfloor"),
@@ -178,6 +179,17 @@ public class CrabEntity extends AnimalEntity implements GeoEntity {
 
     // --------- / ENTITY SETTINGS / --------- //
     @Override
+    protected void dropEquipment(DamageSource source, int lootingMultiplier, boolean allowDrops) {
+        CreeperEntity creeperEntity;
+        super.dropEquipment(source, lootingMultiplier, allowDrops);
+        Entity entity = source.getAttacker();
+        if (entity instanceof CreeperEntity && (creeperEntity = (CreeperEntity)entity).shouldDropHead()) {
+            creeperEntity.onHeadDropped();
+            this.dropItem(ModItems.MUSIC_DISC_CRAB_RAVE);
+        }
+    }
+
+    @Override
     public boolean canBreatheInWater() {
         return true;
     }
@@ -194,16 +206,5 @@ public class CrabEntity extends AnimalEntity implements GeoEntity {
     @Override
     protected Vector3f getPassengerAttachmentPos(Entity passenger, EntityDimensions dimensions, float scaleFactor) {
         return new Vector3f(0.0f, dimensions.height - 0.23f * scaleFactor, 0.0f);
-    }
-
-    @Override
-    protected void dropEquipment(DamageSource source, int lootingMultiplier, boolean allowDrops) {
-        CreeperEntity creeperEntity;
-        super.dropEquipment(source, lootingMultiplier, allowDrops);
-        Entity entity = source.getAttacker();
-        if (entity instanceof CreeperEntity && (creeperEntity = (CreeperEntity)entity).shouldDropHead()) {
-            creeperEntity.onHeadDropped();
-            this.dropItem(ModItems.MUSIC_DISC_CRAB_RAVE);
-        }
     }
 }

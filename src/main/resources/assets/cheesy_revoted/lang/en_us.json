@@ -21,6 +21,16 @@
   "block.cheesy_revoted.penguin_egg": "Penguin Egg",
   "item.cheesy_revoted.penguin_spawn_egg": "Penguin Spawn Egg",
 
+  "entity.cheesy_revoted.sniffer": "Sniffer",
+  "block.cheesy_revoted.sniffer_egg": "Sniffer Egg",
+  "item.cheesy_revoted.sniffer_spawn_egg": "Sniffer Spawn Egg",
+
+  "entity.cheesy_revoted.rascal": "Rascal",
+  "item.cheesy_revoted.rascal_spawn_egg": "Rascal Spawn Egg",
+
+  "entity.cheesy_revoted.tuff_golem": "Tuff Golem",
+  "item.cheesy_revoted.tuff_golem_spawn_egg": "Tuff Golem Spawn Egg",
+
   "entity.cheesy_revoted.copper_golem": "Copper Golem",
   "item.cheesy_revoted.copper_golem_spawn_egg": "Copper Golem Spawn Egg",
 

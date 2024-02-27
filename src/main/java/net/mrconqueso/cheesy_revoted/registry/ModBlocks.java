@@ -14,11 +14,14 @@ import net.minecraft.registry.Registry;
 import net.minecraft.util.Identifier;
 import net.mrconqueso.cheesy_revoted.CheesyRevoted;
 import net.mrconqueso.cheesy_revoted.blocks.PenguinEggBlock;
+import net.mrconqueso.cheesy_revoted.blocks.SnifferEggBlockRevoted;
 
 public class ModBlocks {
 
     public static final Block PENGUIN_EGG = registerBlock("penguin_egg",
             new PenguinEggBlock(FabricBlockSettings.copyOf(Blocks.TURTLE_EGG)));
+    public static final Block SNIFFER_EGG = registerBlock("sniffer_egg",
+            new SnifferEggBlockRevoted(FabricBlockSettings.copyOf(Blocks.SNIFFER_EGG)));
 
     // --------- / FLOWERS / --------- //
     public static final Block DAFFODIL = registerBlock("daffodil",

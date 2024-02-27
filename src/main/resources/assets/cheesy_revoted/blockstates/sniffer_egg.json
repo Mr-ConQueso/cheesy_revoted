@@ -1,0 +1,13 @@
+{
+  "variants": {
+    "hatch=0": {
+      "model": "cheesy_revoted:block/sniffer_egg/sniffer_egg_not_cracked"
+    },
+    "hatch=1": {
+      "model": "cheesy_revoted:block/sniffer_egg/sniffer_egg_slightly_cracked"
+    },
+    "hatch=2": {
+      "model": "cheesy_revoted:block/sniffer_egg/sniffer_egg_very_cracked"
+    }
+  }
+}

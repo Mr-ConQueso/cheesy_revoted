@@ -2,7 +2,6 @@ package net.mrconqueso.cheesy_revoted;
 
 import me.shedaniel.autoconfig.AutoConfig;
 import me.shedaniel.autoconfig.serializer.GsonConfigSerializer;
-import me.shedaniel.autoconfig.serializer.Toml4jConfigSerializer;
 import net.fabricmc.api.ModInitializer;
 import net.fabricmc.fabric.api.event.player.UseEntityCallback;
 import net.fabricmc.fabric.api.object.builder.v1.entity.FabricDefaultAttributeRegistry;
@@ -58,11 +57,13 @@ public class CheesyRevoted implements ModInitializer {
 		// --------- / MOB VOTE 2023 / --------- //
 
 		FabricDefaultAttributeRegistry.register(ModEntities.CRAB, CrabEntity.setAttributes());
-		FabricDefaultAttributeRegistry.register(ModEntities.ARMADILLO, ArmadilloEntity.setAttributes());
+		FabricDefaultAttributeRegistry.register(ModEntities.ARMADILLO, ArmadilloEntityRevoted.setAttributes());
 		FabricDefaultAttributeRegistry.register(ModEntities.PENGUIN, PenguinEntity.setAttributes());
 
 		// --------- / MOB VOTE 2022 / --------- //
-
+		FabricDefaultAttributeRegistry.register(ModEntities.SNIFFER, SnifferEntityRevoted.setAttributes());
+		FabricDefaultAttributeRegistry.register(ModEntities.TUFF_GOLEM, TuffGolemEntity.setAttributes());
+		FabricDefaultAttributeRegistry.register(ModEntities.RASCAL, RascalEntity.setAttributes());
 
 
 		// --------- / MOB VOTE 2021 / --------- //

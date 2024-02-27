@@ -15,7 +15,8 @@ public class ModItemGroup {
 
         addToItemGroup(ItemGroups.INGREDIENTS, ModItems.ARMADILLO_SCUTE, Items.SCUTE);
 
-        addToItemGroup(ItemGroups.NATURAL, Item.fromBlock(ModBlocks.PENGUIN_EGG), Items.SNIFFER_EGG);
+        addToItemGroup(ItemGroups.NATURAL, Item.fromBlock(ModBlocks.SNIFFER_EGG), Items.TURTLE_EGG);
+        addToItemGroup(ItemGroups.NATURAL, Item.fromBlock(ModBlocks.PENGUIN_EGG), Items.TURTLE_EGG);
 
         addToItemGroup(ItemGroups.NATURAL, Item.fromBlock(ModBlocks.DAFFODIL), Items.WITHER_ROSE);
         addToItemGroup(ItemGroups.NATURAL, Item.fromBlock(ModBlocks.LUMISHROOM), Items.WITHER_ROSE);
@@ -37,6 +38,11 @@ public class ModItemGroup {
         addToItemGroup(ItemGroups.SPAWN_EGGS, ModItems.CRAB_SPAWN_EGG, Items.COW_SPAWN_EGG);
         addToItemGroup(ItemGroups.SPAWN_EGGS, ModItems.ARMADILLO_SPAWN_EGG, Items.ALLAY_SPAWN_EGG);
         addToItemGroup(ItemGroups.SPAWN_EGGS, ModItems.PENGUIN_SPAWN_EGG, Items.PARROT_SPAWN_EGG);
+
+        addToItemGroup(ItemGroups.SPAWN_EGGS, ModItems.SNIFFER_SPAWN_EGG, Items.SLIME_SPAWN_EGG);
+        addToItemGroup(ItemGroups.SPAWN_EGGS, ModItems.RASCAL_SPAWN_EGG, Items.RABBIT);
+        addToItemGroup(ItemGroups.SPAWN_EGGS, ModItems.TUFF_GOLEM_SPAWN_EGG, Items.TROPICAL_FISH);
+
         addToItemGroup(ItemGroups.SPAWN_EGGS, ModItems.COPPER_GOLEM_SPAWN_EGG, Items.COD_SPAWN_EGG);
         addToItemGroup(ItemGroups.SPAWN_EGGS, ModItems.MOOBLOOM_SPAWN_EGG, Items.MAGMA_CUBE_SPAWN_EGG);
 

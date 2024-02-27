@@ -17,9 +17,19 @@
 
   "item.cheesy_revoted.armadillo_scute": "Escama de armadillo",
 
-  "entity.cheesy_revoted.penguin": "pingüino",
+  "entity.cheesy_revoted.penguin": "Pingüino",
   "block.cheesy_revoted.penguin_egg": "Huevo de pingüino",
   "item.cheesy_revoted.penguin_spawn_egg": "Generar pingüino",
+
+  "entity.cheesy_revoted.sniffer": "Sniffer",
+  "block.cheesy_revoted.sniffer_egg": "Huevo de sniffer",
+  "item.cheesy_revoted.sniffer_spawn_egg": "Generar sniffer",
+
+  "entity.cheesy_revoted.rascal": "Bandido",
+  "item.cheesy_revoted.rascal_spawn_egg": "Generar bandido",
+
+  "entity.cheesy_revoted.tuff_golem": "Gólem de toba",
+  "item.cheesy_revoted.tuff_golem_spawn_egg": "Generar gólem de toba",
 
   "entity.cheesy_revoted.copper_golem": "Gólem de cobre",
   "item.cheesy_revoted.copper_golem_spawn_egg": "Generar gólem de cobre",

@@ -77,13 +77,15 @@ public class CheesyRevotedClient implements ClientModInitializer {
 
         // --------- / MOB VOTE 2023 / --------- //
 
-        EntityRendererRegistry.register(ModEntities.CRAB, CrabRenderer::new);
         EntityRendererRegistry.register(ModEntities.ARMADILLO, ArmadilloRenderer::new);
+        EntityRendererRegistry.register(ModEntities.CRAB, CrabRenderer::new);
         EntityRendererRegistry.register(ModEntities.PENGUIN, PenguinRenderer::new);
 
         // --------- / MOB VOTE 2022 / --------- //
 
-
+        EntityRendererRegistry.register(ModEntities.SNIFFER, SnifferRenderer::new);
+        EntityRendererRegistry.register(ModEntities.RASCAL, RascalRenderer::new);
+        EntityRendererRegistry.register(ModEntities.TUFF_GOLEM, TuffGolemRenderer::new);
 
         // --------- / MOB VOTE 2021 / --------- //
 

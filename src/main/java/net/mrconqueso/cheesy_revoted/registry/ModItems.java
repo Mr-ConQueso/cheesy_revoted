@@ -18,9 +18,16 @@ public class ModItems {
     public static final Item CRAB_SPAWN_EGG = registerItem("crab_spawn_egg",
             new SpawnEggItem(ModEntities.CRAB, 0x3858b9, 0xff9e4a, new FabricItemSettings()));
     public static final Item ARMADILLO_SPAWN_EGG = registerItem("armadillo_spawn_egg",
-            new SpawnEggItem(ModEntities.ARMADILLO, 0x6a332b, 0xbb7444, new FabricItemSettings()));
+            new SpawnEggItem(ModEntities.ARMADILLO, 0x93605c, 0x522d2d, new FabricItemSettings()));
     public static final Item PENGUIN_SPAWN_EGG = registerItem("penguin_spawn_egg",
             new SpawnEggItem(ModEntities.PENGUIN, 0x363b4f, 0xdbdac6, new FabricItemSettings()));
+
+    public static final Item SNIFFER_SPAWN_EGG = registerItem("sniffer_spawn_egg",
+            new SpawnEggItem(ModEntities.SNIFFER, 8855049, 2468720, new FabricItemSettings()));
+    public static final Item TUFF_GOLEM_SPAWN_EGG = registerItem("tuff_golem_spawn_egg",
+            new SpawnEggItem(ModEntities.TUFF_GOLEM, 0x85837b, 0x901b1f, new FabricItemSettings()));
+    public static final Item RASCAL_SPAWN_EGG = registerItem("rascal_spawn_egg",
+            new SpawnEggItem(ModEntities.RASCAL, 0xb0bbbb, 0x3ea095, new FabricItemSettings()));
 
     public static final Item COPPER_GOLEM_SPAWN_EGG = registerItem("copper_golem_spawn_egg",
             new SpawnEggItem(ModEntities.COPPER_GOLEM, 0xe3826c, 0x7a2c25, new FabricItemSettings()));
